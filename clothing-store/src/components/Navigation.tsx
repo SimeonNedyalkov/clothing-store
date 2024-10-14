@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo/ModaHub Bulgaria_transparent-(1).png";
+import logo from "../assets/logo/ModaHub Bulgaria_transparent-(2).png";
 
 export default function Navigation() {
   const [isHovered, setIsHovered] = useState(false);
