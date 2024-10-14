@@ -1,1 +1,8 @@
-
+.homeItem {
+  display: flex;
+  flex-direction: row;
+}
+.clothesImages {
+  width: 10rem;
+  height: 10rem;
+}

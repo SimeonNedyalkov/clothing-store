@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import logo from "../assets/logo/ModaHub Bulgaria_transparent-(2).png";
+import Cloth from "../types/Cloth";
 
-export default function Navigation(props: { allClothes: any[] }) {
+export default function Navigation(props: { allClothes: Cloth[] }) {
   const [isHovered, setIsHovered] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
 

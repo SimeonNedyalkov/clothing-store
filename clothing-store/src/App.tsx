@@ -23,7 +23,7 @@ function App() {
   return (
     <div>
       <Navigation allClothes={allClothes} />
-      <Home />
+      <Home allClothes={allClothes} />
     </div>
   );
 }
