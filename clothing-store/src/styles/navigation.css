@@ -1,0 +1,60 @@
+.navbarWrapper {
+}
+.navbar {
+  font-family: Inter, "Hiragino Sans";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  background-color: transparent;
+  z-index: 1000;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 10px;
+
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category-slider {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  margin-right: 3rem;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  color: black;
+}
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+.nav-container {
+  display: flex;
+  flex-direction: row;
+}
+.logo {
+  position: absolute;
+  left: 0;
+  top: -50px;
+  width: 4rem;
+  height: 4rem;
+  z-index: 100;
+}
