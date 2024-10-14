@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/logo/ModaHub Bulgaria_transparent-(2).png";
 
-export default function Navigation() {
+export default function Navigation(props: { allClothes: any[] }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (Array.isArray(props.allClothes)) {
+      const uniqueCategories = new Set<string>();
+
+      props.allClothes.forEach((item) => {
+        uniqueCategories.add(item.category);
+      });
+
+      setCategories(Array.from(uniqueCategories));
+    }
+  }, [props.allClothes]);
 
   return (
     <div className="navbarWrapper">
@@ -37,15 +50,17 @@ export default function Navigation() {
                     transform="translate(-653.769 -94.646)"
                     fill="none"
                     stroke="#222"
-                    stroke-width="1"
+                    strokeWidth="1"
                   ></path>
                 </svg>
               </a>
               {isHovered && (
                 <div className="dropdown-content">
-                  <a href="#category1">Category 1</a>
-                  <a href="#category2">Category 2</a>
-                  <a href="#category3">Category 3</a>
+                  {categories.map((category, index) => (
+                    <a href={`#${category}`} key={index}>
+                      {category} {/* Display each unique category */}
+                    </a>
+                  ))}
                 </div>
               )}
             </div>
