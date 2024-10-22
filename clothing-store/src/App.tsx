@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import "swiper/swiper-bundle.css";
 import axios from "axios";
+import { Route, Routes } from "react-router-dom";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -21,10 +22,12 @@ function App() {
   }, []);
   console.log(allClothes);
   return (
-    <div>
+    <>
       <Navigation allClothes={allClothes} />
-      <Home allClothes={allClothes} />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home allClothes={allClothes}></Home>}></Route>
+      </Routes>
+    </>
   );
 }
 

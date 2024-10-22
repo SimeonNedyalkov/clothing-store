@@ -1,4 +1,5 @@
 interface Cloth {
+  _id: string;
   brand: string;
   category: string;
   color: string;
