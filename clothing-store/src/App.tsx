@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import "swiper/swiper-bundle.css";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
+import Loader from "./components/Loader";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   console.log(allClothes);
   return (
     <>
+      <Loader></Loader>
       <Navigation allClothes={allClothes} />
       <Routes>
         <Route path="/" element={<Home allClothes={allClothes}></Home>}></Route>
