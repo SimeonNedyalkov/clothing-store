@@ -94,7 +94,10 @@
   width: auto;
   height: auto;
 }
-
+.lenion {
+  height: 50vh;
+  width: 50vw;
+}
 .newArrivalImage {
   width: 80%;
   height: 30rem;
