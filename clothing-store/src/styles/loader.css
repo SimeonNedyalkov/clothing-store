@@ -9,6 +9,7 @@
   align-items: center;
   background-color: black;
   z-index: 9999;
+  overflow: hidden;
 }
 
 .black-screen {
@@ -16,14 +17,43 @@
   font-size: 40px;
   font-family: "Courier New", Courier, monospace;
   white-space: nowrap;
-  overflow: hidden;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .text {
   font-family: "Teko", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 700;
-  font-style: normal;
   letter-spacing: 2px;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  color: transparent;
+  animation: charge 0.5s forwards;
+}
+
+.char:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.char:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+@keyframes charge {
+  0% {
+    opacity: 0;
+    color: transparent;
+  }
+  50% {
+    opacity: 0.5;
+    color: #666;
+  }
+  100% {
+    opacity: 1;
+    color: #fff;
+  }
 }
