@@ -47,11 +47,12 @@
 }
 .logo {
   position: absolute;
-  left: 0;
-  top: -50px;
+  left: 10%;
+  top: -10%;
   width: 4rem;
   height: 4rem;
   z-index: 100;
+  color: white;
 }
 .nav-links a {
   position: relative;
@@ -181,4 +182,42 @@
   .nav-links.open {
     display: flex; /* Show when menu is open */
   }
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem; /* Same size for all parts */
+}
+
+.logo-part {
+  font-family: "Arial", sans-serif; /* Base font for consistency */
+  transition: all 0.3s ease; /* Optional smooth transitions */
+}
+
+/* Distinct font for "Le" */
+.logo-part.fancy {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  color: #92a50d;
+}
+
+/* Regular font for "ni" */
+.logo-part.normal {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #92a50d;
+}
+
+/* Thin and faded font for "on" */
+.logo-part.faded {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #92a50d;
 }
