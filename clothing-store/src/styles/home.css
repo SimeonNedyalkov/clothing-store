@@ -1,4 +1,36 @@
 /* Website Content */
+
+.home {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.website-content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive Text */
+.text {
+}
+.text h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+
+.text p {
+  font-size: 1rem;
+  color: #aaa;
+  line-height: 1.5;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.myImage {
+}
 .website-content {
   opacity: 0;
   visibility: hidden;
@@ -11,11 +43,17 @@
   height: 100vh;
   width: 100vw;
   color: white;
-  background-color: #333;
+  background-color: #161a1d;
 }
 
 .website-content.visible {
   opacity: 1;
   visibility: visible;
   transform: scaleY(1);
+}
+.selectCloth {
+  position: absolute;
+  color: black;
+  top: 15rem;
+  left: 25rem;
 }

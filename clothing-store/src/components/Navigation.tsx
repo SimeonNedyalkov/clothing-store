@@ -3,7 +3,7 @@ import logo from "../assets/logo/ModaHub Bulgaria_transparent-(2).png";
 import Cloth from "../types/Cloth";
 
 export default function Navigation(props: { allClothes: Cloth[] }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
@@ -29,13 +29,24 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
             </a>
           </div>
 
-          {/* Navigation Links Section */}
-          <div className="nav-links">
-            <div
-              className="category-dropdown"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+          {/* Hamburger Menu Button */}
+          <button
+            className="hamburger-menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
             >
+              <path fill="currentColor" d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+
+          {/* Navigation Links Section */}
+          <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+            <div className="category-dropdown">
               <a href="#category" className="category-link">
                 Category{" "}
                 <svg
@@ -55,15 +66,13 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
                   ></path>
                 </svg>
               </a>
-              {isHovered && (
-                <div className="dropdown-content">
-                  {categories.map((category, index) => (
-                    <a href={`#${category}`} key={index}>
-                      {category} {/* Display each unique category */}
-                    </a>
-                  ))}
-                </div>
-              )}
+              <div className="dropdown-content">
+                {categories.map((category, index) => (
+                  <a href={`#${category}`} key={index}>
+                    {category}
+                  </a>
+                ))}
+              </div>
             </div>
             <a href="#brand">Brand</a>
             <a href="#ranking">Ranking</a>

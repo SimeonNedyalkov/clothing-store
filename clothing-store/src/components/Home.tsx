@@ -1,14 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Cloth from "../types/Cloth";
-import woman from "../assets/home/736cd5394c992967d4ceb8999f72ca0a.jpg";
-import man from "../assets/home/c70ca72b5906d5910157814709a08f7d.jpg";
-import kid from "../assets/home/R.jfif";
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-export default function Home(props: { allClothes: Cloth[] }) {
+import { useEffect, useState } from "react";
+import myImage from "../assets/neon-circle-2.png";
+export default function Home() {
   const [isWebsiteVisible, setIsWebsiteVisible] = useState(false);
 
   useEffect(() => {
@@ -35,7 +27,7 @@ export default function Home(props: { allClothes: Cloth[] }) {
         },
       },
       {
-        breakpoint: 600, // For mobile screens
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -43,11 +35,24 @@ export default function Home(props: { allClothes: Cloth[] }) {
       },
     ],
   };
-
   return (
-    <div className="home">
-      <div className={`website-content ${isWebsiteVisible ? "visible" : ""}`}>
-        <h1>Welcome to the Website!</h1>
+    <div
+      className={`website-content ${
+        isWebsiteVisible
+          ? "visible home flex justify-center items-center justify-items-center flex-col"
+          : "home flex justify-center items-center justify-items-center flex-col"
+      }`}
+    >
+      <h1 className="text-3xl font-bold underline absolute">Hello world!</h1>
+      <div className="">
+        <img src={myImage} alt="" className="myImage" />
+        <div className="selectCloth absolute">
+          <h1 className="">Select a Vehicle Type</h1>
+          <p className="">
+            As an automotive NVH designer, different types of vehicles confront
+            you with different acoustic challenges.
+          </p>
+        </div>
       </div>
     </div>
   );
