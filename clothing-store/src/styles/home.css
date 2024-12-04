@@ -43,7 +43,7 @@
   height: 100vh;
   width: 100vw;
   color: white;
-  background-color: #161a1d;
+  background: radial-gradient(circle, #0d0d0d 0%, #000000 100%);
 }
 
 .website-content.visible {

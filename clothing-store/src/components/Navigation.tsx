@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import logo from "../assets/logo/ModaHub Bulgaria_transparent-(2).png";
+import hamburgerMenuIconOpen from "../assets/hamburgerMenu/menu.png";
+import hamburgerMenuIconClosed from "../assets/hamburgerMenu/menu3.png";
 import Cloth from "../types/Cloth";
 
 export default function Navigation(props: { allClothes: Cloth[] }) {
@@ -30,19 +32,33 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
           </div>
 
           {/* Hamburger Menu Button */}
-          <button
-            className="hamburger-menu"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
+          {isMenuOpen ? (
+            <button
+              className="hamburger-menu"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <path fill="currentColor" d="M3 6h18M3 12h18M3 18h18" />
-            </svg>
-          </button>
+              <img
+                src={hamburgerMenuIconOpen}
+                alt=""
+                className="icon"
+                width={40}
+                height={40}
+              />
+            </button>
+          ) : (
+            <button
+              className="hamburger-menu"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <img
+                src={hamburgerMenuIconClosed}
+                alt=""
+                className="icon"
+                width={40}
+                height={40}
+              />
+            </button>
+          )}
 
           {/* Navigation Links Section */}
           <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
