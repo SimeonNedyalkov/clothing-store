@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "variables";
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -16,7 +17,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: $a-color;
   text-decoration: inherit;
 }
 a:hover {
@@ -51,7 +52,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: $a-color;
 }
 button:focus,
 button:focus-visible {

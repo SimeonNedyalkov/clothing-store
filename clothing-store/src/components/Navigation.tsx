@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import logo from "../assets/logo/ModaHub Bulgaria_transparent-(2).png";
 import hamburgerMenuIconOpen from "../assets/hamburgerMenu/menu4.png";
 import hamburgerMenuIconClosed from "../assets/hamburgerMenu/menu-burger.png";
 import Cloth from "../types/Cloth";
@@ -25,10 +24,15 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
       <div className="navbar">
         <div className="nav-container">
           {/* Logo Section */}
-          <div className="logo">
-            <span className="logo-part fancy">Le</span>
-            <span className="logo-part normal">ni</span>
-            <span className="logo-part faded">on</span>
+
+          <div className="box-container">
+            <div className="pointed-box">
+              <div className="logo">
+                <span className="logo-part fancy">Le</span>
+                <span className="logo-part normal">ni</span>
+                <span className="logo-part faded">on</span>
+              </div>
+            </div>
           </div>
 
           {/* Hamburger Menu Button */}

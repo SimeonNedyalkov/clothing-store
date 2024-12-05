@@ -40,7 +40,7 @@
   height: 100vh;
   width: 100vw;
   color: white;
-  background: radial-gradient(circle, #0d0d0d 0%, #000000 100%);
+  background: white;
 }
 
 .website-content.visible {
