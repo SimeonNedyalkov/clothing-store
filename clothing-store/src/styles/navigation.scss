@@ -264,8 +264,133 @@
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.logo {
+  position: absolute;
+  top: 80px;
+}
 @media (max-width: 780px) {
   .pointed-box {
     width: 15rem;
   }
+}
+
+// hamburger
+$size: 12px;
+$spread: 12px;
+$trans: cubic-bezier(0.9, 0, 0.1, 1);
+
+#hamburger {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transform: translate(-50%, -50%);
+
+  & > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: $size;
+    height: $size;
+    border-radius: calc(#{$size} / 2);
+    border: 1px solid black;
+    background-color: black;
+    animation: anim 1000ms $trans;
+  }
+
+  .topleft {
+    left: calc(50% - #{$spread});
+    top: calc(50% - #{$spread});
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .topright {
+    left: calc(50% + #{$spread});
+    top: calc(50% - #{$spread});
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .bottomright {
+    left: calc(50% + #{$spread});
+    top: calc(50% + #{$spread});
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .bottomleft {
+    left: calc(50% - #{$spread});
+    top: calc(50% + #{$spread});
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  @keyframes anim {
+    25% {
+      top: 50%;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      height: $size;
+      width: 10px;
+    }
+    50% {
+      top: 50%;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      height: 48px;
+      width: 6px;
+    }
+  }
+  &.hamburgerAnimation {
+    .topleft {
+      animation: topleftAnim 1s $trans normal;
+    }
+    .topright {
+      animation: toprightAnim 1s $trans normal;
+    }
+    .bottomright {
+      animation: bottomrightAnim 1s $trans normal;
+    }
+    .bottomleft {
+      animation: bottomleftAnim 1s $trans normal;
+    }
+  }
+
+  @keyframes topleftAnim {
+    0% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+  @keyframes toprightAnim {
+    0% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+  @keyframes bottomrightAnim {
+    0% {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+  @keyframes bottomleftAnim {
+    0% {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+}
+.hambButton {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 2.5rem;
+  height: 2.5rem;
 }

@@ -28,27 +28,6 @@
   margin: 0 auto;
 }
 
-.website-content {
-  opacity: 0;
-  visibility: hidden;
-  transform: scaleY(0);
-  transform-origin: center;
-  transition: transform 1s ease, opacity 1s ease, visibility 1s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  color: white;
-  background: white;
-}
-
-.website-content.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: scaleY(1);
-}
-
 .selectCloth {
   position: absolute;
   color: black;

@@ -9,6 +9,14 @@ const baseUrl = "http://localhost:3000";
 
 function App() {
   const [allClothes, setAllClothes] = useState([]);
+  const [isWebsiteVisible, setIsWebsiteVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsWebsiteVisible(false);
+      setIsWebsiteVisible(true);
+    }, 2000);
+  }, []);
   useEffect(() => {
     const fetchClothes = async () => {
       try {
@@ -22,9 +30,13 @@ function App() {
     fetchClothes();
   }, []);
   console.log(allClothes);
+  console.log(isWebsiteVisible);
   return (
     <>
       <Loader></Loader>
+      <div
+        className={`background-overlay ${isWebsiteVisible ? "visible" : ""}`}
+      ></div>
       <Navigation allClothes={allClothes} />
       <Routes>
         <Route path="/" element={<Home allClothes={allClothes}></Home>}></Route>

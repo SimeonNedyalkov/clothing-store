@@ -18,7 +18,6 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
       setCategories(Array.from(uniqueCategories));
     }
   }, [props.allClothes]);
-
   return (
     <div className="navbarWrapper">
       <div className="navbar">
@@ -36,33 +35,20 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
           </div>
 
           {/* Hamburger Menu Button */}
-          {isMenuOpen ? (
-            <button
-              className="hamburger-menu"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+          <button
+            className="hambButton"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <div
+              id="hamburger"
+              className={`${isMenuOpen ? "" : "hamburgerAnimation"}`}
             >
-              <img
-                src={hamburgerMenuIconOpen}
-                alt=""
-                className="icon"
-                width={40}
-                height={40}
-              />
-            </button>
-          ) : (
-            <button
-              className="hamburger-menu"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <img
-                src={hamburgerMenuIconClosed}
-                alt=""
-                className="icon"
-                width={40}
-                height={40}
-              />
-            </button>
-          )}
+              <div className="topleft"></div>
+              <div className="topright"></div>
+              <div className="bottomright"></div>
+              <div className="bottomleft"></div>
+            </div>
+          </button>
 
           {/* Navigation Links Section */}
           <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
