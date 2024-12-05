@@ -1,10 +1,10 @@
 /* Website Content */
+
 .home {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
-
 .website-content {
   height: 100vh;
   width: 100vw;
@@ -15,6 +15,8 @@
 }
 
 /* Responsive Text */
+.text {
+}
 .text h1 {
   font-size: 2rem;
   margin: 0 0 1rem;
@@ -27,7 +29,8 @@
   max-width: 500px;
   margin: 0 auto;
 }
-
+.myImage {
+}
 .website-content {
   opacity: 0;
   visibility: hidden;
@@ -48,10 +51,9 @@
   visibility: visible;
   transform: scaleY(1);
 }
-
 .selectCloth {
   position: absolute;
   color: black;
   top: 15rem;
   left: 25rem;
-}/*# sourceMappingURL=home.css.map */
+}
