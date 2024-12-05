@@ -1,201 +1,3 @@
-// @import "./_variables";
-// .navbar {
-//   font-family: Inter, "Hiragino Sans";
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   width: 100vw;
-//   display: flex;
-//   flex-direction: row;
-//   top: 0;
-//   background-color: transparent;
-//   z-index: 1000;
-//   display: flex;
-//   justify-content: end;
-//   align-items: center;
-//   padding: 10px;
-// }
-
-// .category-slider {
-//   flex-grow: 1;
-//   margin-right: 20px;
-// }
-
-// .nav-links a:hover {
-//   color: #7d5656;
-// }
-
-// .dropdown-content {
-//   display: flex;
-//   flex-direction: column;
-// }
-// .nav-container {
-//   display: flex;
-//   flex-direction: row;
-// }
-
-// @keyframes flip {
-//   from {
-//     transform: perspective(400px) rotateY(0deg);
-//   }
-//   to {
-//     transform: perspective(400px) rotateY(180deg);
-//   }
-// }
-// .navbarWrapper {
-//   width: 100%;
-// }
-
-// .nav-container {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 10px 20px;
-// }
-
-// // dropdown
-// .category-dropdown {
-//   position: relative;
-// }
-
-// .dropdown-content {
-//   display: none;
-//   position: absolute;
-//   top: 30px;
-//   left: 0;
-//   background-color: white;
-//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//   z-index: 1;
-// }
-
-// .category-dropdown:hover .dropdown-content {
-//   display: block;
-// }
-// // navlinks
-
-// .nav-links.open {
-//   margin-top: 0.3rem;
-//   display: flex;
-// }
-// .nav-links a {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: start;
-//   flex: 0;
-//   position: relative;
-//   margin: 0 10px;
-//   text-decoration: none;
-//   color: $a-color;
-//   font-weight: 500;
-//   margin-right: 3rem;
-//   overflow: hidden;
-// }
-// .nav-links a::after {
-//   content: "";
-//   position: absolute;
-//   left: 50%;
-//   bottom: -5px;
-//   width: 100%;
-//   height: 2px;
-//   background: #7d5656;
-//   transform: translateX(-50%) scaleX(0);
-//   transition: transform 0.3s ease;
-// }
-// .nav-links a:hover::after {
-//   transform: translateX(-50%) scaleX(1);
-// }
-// .category-link {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   color: black;
-// }
-// // Logo
-
-// .logo {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: 2rem;
-//   position: absolute;
-//   left: 10%;
-//   top: -10%;
-//   width: 4rem;
-//   height: 4rem;
-//   z-index: 100;
-//   color: white;
-// }
-
-// .logo-part {
-//   font-family: "Arial", sans-serif;
-//   transition: all 0.3s ease;
-// }
-
-// /* Distinct font for "Le" */
-// .logo-part.fancy {
-//   font-family: "Quicksand", sans-serif;
-//   font-optical-sizing: auto;
-//   font-weight: 900;
-//   font-style: normal;
-//   color: #92a50d;
-// }
-
-// /* Regular font for "ni" */
-// .logo-part.normal {
-//   font-family: "Quicksand", sans-serif;
-//   font-optical-sizing: auto;
-//   font-weight: 500;
-//   font-style: normal;
-//   color: #92a50d;
-// }
-
-// /* Thin and faded font for "on" */
-// .logo-part.faded {
-//   font-family: "Quicksand", sans-serif;
-//   font-optical-sizing: auto;
-//   font-weight: 300;
-//   font-style: normal;
-//   color: #92a50d;
-// }
-
-// // hamburger menu
-// .hamburger-menu {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   width: 40px;
-//   height: 25px;
-//   background: none;
-//   border: none;
-//   cursor: pointer;
-//   padding: 0;
-// }
-// /* Mobile-specific styles */
-// @media (max-width: 768px) {
-//   .hamburger-menu {
-//     display: block;
-//     color: white;
-//     background-color: transparent;
-//   }
-
-//   .nav-links {
-//     display: none;
-//     flex-direction: column;
-//     position: absolute;
-//     top: 60px;
-//     right: 20px;
-//     background-color: white;
-//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//     padding: 10px 20px;
-//     border-radius: 5px;
-//   }
-
-//   .nav-links.open {
-//     display: flex;
-//   }
-// }
 @import "./_variables";
 .navbar {
   font-family: Inter, "Hiragino Sans";
@@ -222,8 +24,8 @@
 // hamburger menu
 .hamburger-menu {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: -40px;
+  right: 40px;
 }
 // navlinks
 
@@ -231,9 +33,9 @@
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 60px;
+  top: 100px;
   right: 20px;
-  background-color: blueviolet;
+  background-color: rgb(0, 0, 0);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
   border-radius: 5px;
@@ -241,6 +43,9 @@
 .open {
   display: flex;
   flex-direction: column;
+}
+.nav-links a {
+  color: white;
 }
 //box with logo
 .box-container {
@@ -275,122 +80,371 @@
 }
 
 // hamburger
-$size: 12px;
-$spread: 12px;
-$trans: cubic-bezier(0.9, 0, 0.1, 1);
-
-#hamburger {
+.hamburger {
   position: absolute;
   top: 20px;
-  right: 20px;
-  transform: translate(-50%, -50%);
+  left: 20px;
+}
+// vars
+$color: black; // icon color
+$animation: 0.6s; // animation speed
+$scale: 1; // icon scale 68/68 default
 
-  & > * {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
-    width: $size;
-    height: $size;
-    border-radius: calc(#{$size} / 2);
-    border: 1px solid black;
-    background-color: black;
-    animation: anim 1000ms $trans;
-  }
+// spacing + background-color
 
-  .topleft {
-    left: calc(50% - #{$spread});
-    top: calc(50% - #{$spread});
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  .topright {
-    left: calc(50% + #{$spread});
-    top: calc(50% - #{$spread});
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  .bottomright {
-    left: calc(50% + #{$spread});
-    top: calc(50% + #{$spread});
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-  .bottomleft {
-    left: calc(50% - #{$spread});
-    top: calc(50% + #{$spread});
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
+.hamburglar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transform: scale($scale);
+  margin: 40px auto;
+  position: relative;
+  display: block;
+  width: 68px;
+  height: 68px;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
 
-  @keyframes anim {
-    25% {
-      top: 50%;
-      left: 50%;
-      bottom: auto;
-      right: auto;
-      height: $size;
-      width: 10px;
-    }
-    50% {
-      top: 50%;
-      left: 50%;
-      bottom: auto;
-      right: auto;
-      height: 48px;
-      width: 6px;
-    }
-  }
-  &.hamburgerAnimation {
-    .topleft {
-      animation: topleftAnim 1s $trans normal;
-    }
-    .topright {
-      animation: toprightAnim 1s $trans normal;
-    }
-    .bottomright {
-      animation: bottomrightAnim 1s $trans normal;
-    }
-    .bottomleft {
-      animation: bottomleftAnim 1s $trans normal;
-    }
-  }
+// transition mask
+.path-burger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 68px;
+  width: 68px;
+  // two masks because... browser support.
+  mask: url(#mask);
+  -webkit-mask-box-image: url(https://raygun.io/upload/mask.svg);
+}
 
-  @keyframes topleftAnim {
-    0% {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-  }
-  @keyframes toprightAnim {
-    0% {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-  }
-  @keyframes bottomrightAnim {
-    0% {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-  }
-  @keyframes bottomleftAnim {
-    0% {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
+.animate-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 68px;
+  height: 68px;
+}
+
+// what this does is create a small square that I then rotate behind an svg mask, giving the apparence of the line animating
+.path-rotation {
+  height: 34px;
+  width: 34px;
+  margin: 34px 34px 0 0;
+  transform: rotate(0deg);
+  transform-origin: 100% 0;
+  &:before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 34px;
+    margin: 0 4px 0 0;
+    background: $color;
   }
 }
-.hambButton {
-  cursor: pointer;
+
+// box rotation animation
+@keyframes rotate-out {
+  0% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-in {
+  0% {
+    transform: rotate(360deg);
+  }
+  40% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+// offset moves
+// dasharray is the dash size
+// need to be able to control dash space size.
+
+.hamburglar.is-open {
+  .path {
+    animation: dash-in $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+  .animate-path {
+    animation: rotate-in $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+}
+
+.hamburglar.is-closed {
+  .path {
+    animation: dash-out $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+  .animate-path {
+    animation: rotate-out $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+}
+
+.path {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  stroke-linejoin: round;
+}
+
+@keyframes dash-in {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  40% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes dash-out {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  40% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 240;
+  }
+}
+
+// All good burgers need filling!
+
+.burger-icon {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 2.5rem;
-  height: 2.5rem;
+  padding: 20px 16px;
+  height: 68px;
+  width: 68px;
+}
+
+.burger-container {
+  position: relative;
+  height: 28px;
+  width: 36px;
+}
+
+.burger-bun-top,
+.burger-bun-bot,
+.burger-filling {
+  position: absolute;
+  display: block;
+  height: 4px;
+  width: 36px;
+  border-radius: 2px;
+  background: $color;
+}
+
+.burger-bun-top {
+  top: 0;
+  transform-origin: 34px 2px;
+}
+
+.burger-bun-bot {
+  bottom: 0;
+  transform-origin: 34px 2px;
+}
+//.burger-filling {
+//  @include transition(all,($animation/2.5),ease-in-//out);
+//}
+// relative parent is the button
+.burger-filling {
+  top: 12px;
+}
+
+// burger ring container
+.burger-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 68px;
+  height: 68px;
+}
+
+.svg-ring {
+  width: 68px;
+  height: 68px;
+}
+
+// bun animations
+.hamburglar.is-open {
+  .burger-bun-top {
+    animation: bun-top-out $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+  .burger-bun-bot {
+    animation: bun-bot-out $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+}
+.hamburglar.is-closed {
+  .burger-bun-top {
+    animation: bun-top-in $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+  .burger-bun-bot {
+    animation: bun-bot-in $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes bun-top-out {
+  0% {
+    left: 0;
+    top: 0;
+    transform: rotate(0deg);
+  }
+  20% {
+    left: 0;
+    top: 0;
+    transform: rotate(15deg);
+  }
+  80% {
+    left: -5px;
+    top: 0;
+    transform: rotate(-60deg);
+  }
+  100% {
+    left: -5px;
+    top: 1px;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes bun-bot-out {
+  0% {
+    left: 0;
+    transform: rotate(0deg);
+  }
+  20% {
+    left: 0;
+    transform: rotate(-15deg);
+  }
+  80% {
+    left: -5px;
+    transform: rotate(60deg);
+  }
+  100% {
+    left: -5px;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes bun-top-in {
+  0% {
+    left: -5px;
+    bot: 0;
+    transform: rotate(-45deg);
+  }
+  20% {
+    left: -5px;
+    bot: 0;
+    transform: rotate(-60deg);
+  }
+  80% {
+    left: 0;
+    bot: 0;
+    transform: rotate(15deg);
+  }
+  100% {
+    left: 0;
+    bot: 1px;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bun-bot-in {
+  0% {
+    left: -5px;
+    transform: rotate(45deg);
+  }
+  20% {
+    left: -5px;
+    bot: 0;
+    transform: rotate(60deg);
+  }
+  80% {
+    left: 0;
+    bot: 0;
+    transform: rotate(-15deg);
+  }
+  100% {
+    left: 0;
+    transform: rotate(0deg);
+  }
+}
+
+// burger filling
+.hamburglar.is-open {
+  .burger-filling {
+    animation: burger-fill-out $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+}
+
+.hamburglar.is-closed {
+  .burger-filling {
+    animation: burger-fill-in $animation linear normal;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes burger-fill-in {
+  0% {
+    width: 0;
+    left: 36px;
+  }
+  40% {
+    width: 0;
+    left: 40px;
+  }
+  80% {
+    width: 36px;
+    left: -6px;
+  }
+  100% {
+    width: 36px;
+    left: 0px;
+  }
+}
+
+@keyframes burger-fill-out {
+  0% {
+    width: 36px;
+    left: 0px;
+  }
+  20% {
+    width: 42px;
+    left: -6px;
+  }
+
+  40% {
+    width: 0;
+    left: 40px;
+  }
+
+  100% {
+    width: 0;
+    left: 36px;
+  }
 }
