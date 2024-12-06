@@ -64,6 +64,10 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+  body,
+  * {
+    max-width: 50vw;
+  }
   a:hover {
     color: #747bff;
   }

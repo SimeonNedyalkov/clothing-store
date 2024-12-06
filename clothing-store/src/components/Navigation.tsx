@@ -5,7 +5,7 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(true);
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {

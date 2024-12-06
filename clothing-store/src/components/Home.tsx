@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import Slider from "./Slider";
+import Cloth from "../types/Cloth";
 // import myImage from "../assets/neon-circle-2.png";
-export default function Home() {
+export default function Home(props: { allClothes: Cloth[] }) {
   const [isWebsiteVisible, setIsWebsiteVisible] = useState(false);
 
   useEffect(() => {
@@ -37,18 +39,9 @@ export default function Home() {
   };
   return (
     <div className={`website-content ${isWebsiteVisible ? "visible" : "home"}`}>
-      <h1 className="text-3xl">Hello world!</h1>
-      <div className="">
-        <div className="one"></div>
-        {/* <img src={myImage} alt="" className="myImage" /> */}
-        <div className="selectCloth">
-          <h1 className="">Select a Vehicle Type</h1>
-          <p className="">
-            As an automotive NVH designer, different types of vehicles confront
-            you with different acoustic challenges.
-          </p>
-        </div>
-      </div>
+      <h1 className="">Hello world!</h1>
+
+      <Slider allClothes={props.allClothes} />
     </div>
   );
 }
