@@ -29,6 +29,8 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     <div className="slider-container">
       <div className="slider">
         <div className="slides">
+          <div className="pointed-boxLeft"></div>
+          <div className="pointed-boxRight"></div>
           <img
             className="sliderImage"
             src={`${getImages[currentIndex]}`}

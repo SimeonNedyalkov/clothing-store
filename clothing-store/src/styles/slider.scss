@@ -1,6 +1,6 @@
 .slider-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -46,4 +46,22 @@ button {
 
 button:hover {
   background: rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 768px) {
+  .sliderImage {
+    height: auto;
+  }
+  .prev,
+  .next {
+    font-size: 20px;
+    padding: 8px;
+    font-size: 0.8rem;
+    background-color: transparent;
+  }
+  .prev {
+    left: 0;
+  }
+  .next {
+    right: 0;
+  }
 }
