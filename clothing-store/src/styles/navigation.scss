@@ -8,10 +8,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-}
-
 .navbar {
   font-family: Inter, "Hiragino Sans";
   position: fixed;
@@ -60,6 +56,7 @@ body {
   gap: 2rem;
   padding: 1rem;
 }
+
 .buttons {
   margin-top: 0;
 }
@@ -161,87 +158,8 @@ body {
     top: -2rem;
     right: 1rem;
   }
+  .blob-btn {
+    top: 5rem;
+    left: 1.5rem;
+  }
 }
-// .navbarWrapper {
-//   width: 100%;
-//   background-color: #fff; /* Adjust background color as needed */
-//   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
-//   position: fixed;
-//   top: 0;
-//   z-index: 1000;
-// }
-
-// .navbar {
-//   display: flex;
-//   justify-content: center; /* Ensures content aligns horizontally */
-//   align-items: center;
-//   height: 60px; /* Adjust height as needed */
-// }
-
-// .nav-container {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   width: 100%;
-//   max-width: 1200px; /* Adjust container width as needed */
-//   padding: 0 20px; /* Add some padding for spacing */
-// }
-
-// .box-container {
-//   flex: 1;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .pointed-box {
-//   width: fit-content;
-//   padding: 10px 20px;
-//   border: 2px solid #000;
-//   border-radius: 25px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background: #f9f9f9; /* Optional background for the box */
-// }
-
-// .logo {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   font-family: "Arial", sans-serif;
-//   font-size: 20px; /* Adjust font size */
-// }
-
-// .logo-part {
-//   margin: 0 3px;
-// }
-
-// .fancy {
-//   font-weight: bold;
-//   color: #ff5722; /* Add fancy color */
-// }
-
-// .normal {
-//   font-weight: bold;
-//   color: #333;
-// }
-
-// .faded {
-//   font-weight: normal;
-//   color: #aaa;
-// }
-
-// .secondMenu-container {
-//   flex: 1;
-//   display: flex;
-//   justify-content: flex-start;
-//   align-items: center;
-// }
-
-// .hamburger-container {
-//   flex: 1;
-//   display: flex;
-//   justify-content: flex-end;
-//   align-items: center;
-// }

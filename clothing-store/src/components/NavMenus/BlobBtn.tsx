@@ -1,15 +1,23 @@
+import { useEffect, useState } from "react";
+
 export default function BlobBtn({
   label,
-  onClick,
+  handleClickMobile,
 }: {
   label: string;
-  onClick?: () => void;
+  handleClickMobile?: () => void;
 }) {
+  const [shown, setIsShown] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsShown(true);
+    }, 2700);
+  });
   return (
     <div className="buttons">
-      <button className="blob-btn">
+      <button className="blob-btn" onClick={handleClickMobile}>
         {label}
-        <span className="blob-btn__inner">
+        <span className={shown ? "blob-btn__inner" : "blob-btn__inner act"}>
           <span className="blob-btn__blobs">
             <span className="blob-btn__blob"></span>
             <span className="blob-btn__blob"></span>
