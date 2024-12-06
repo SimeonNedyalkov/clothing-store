@@ -1,5 +1,16 @@
 @import "./_variables";
 @import "./hamburgerIcon.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
 .navbar {
   font-family: Inter, "Hiragino Sans";
   position: fixed;
@@ -11,63 +22,51 @@
   flex-direction: row;
   background-color: transparent;
   z-index: 70;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   gap: 1rem;
+  padding: 1rem 2rem;
 }
-
-.firstBar {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  padding: 10px;
+.navbar {
+  font-family: Inter, "Hiragino Sans";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
   display: flex;
-  gap: 2rem;
-  z-index: 999;
-  font-family: "Coustard", serif;
-  font-weight: 900;
-  font-style: bold;
-  font-size: 1.5rem;
+  flex-direction: row;
+  background-color: transparent;
+  z-index: 70;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
   gap: 1rem;
-  margin-left: 3rem;
-
-  button.group {
-    background-color: transparent;
-    color: black;
-    border: 2px solid black;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    border-radius: 2rem;
-  }
-
-  button.group:hover,
-  button.group:focus,
-  button.group:active {
-    background-color: black;
-    color: white;
-  }
-
-  button.group:focus {
-    outline: none;
-  }
-  button.group:active {
-    background-color: black;
-    color: white;
-  }
+  padding: 1rem 2rem;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+.secondMenuWrapper {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  gap: 2rem;
+  padding: 1rem;
+}
+.buttons {
+  margin-top: 0;
 }
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100vw;
 }
 // hamburger menu
 .hamburger-menu {
@@ -119,7 +118,7 @@
 }
 .logo {
   position: absolute;
-  top: 80px;
+  top: 105px;
   letter-spacing: 0.1rem;
   animation: slideInFromBottom 1s ease-out;
 }
@@ -141,10 +140,6 @@
   font-weight: bold;
   font-style: normal;
 }
-.mobileDropdown {
-  display: flex;
-  flex-direction: column;
-}
 
 @keyframes slideInFromBottom {
   0% {
@@ -156,22 +151,96 @@
     opacity: 1;
   }
 }
+
 @media (max-width: 780px) {
   .pointed-box {
     width: 15rem;
-  }
-  .firstBar {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.7rem;
-    margin-left: 0px;
-    gap: 0.3rem;
   }
   .hamburger-menu {
     top: -2rem;
     right: 1rem;
   }
-  button.group {
-    width: 5rem;
-  }
 }
+// .navbarWrapper {
+//   width: 100%;
+//   background-color: #fff; /* Adjust background color as needed */
+//   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+//   position: fixed;
+//   top: 0;
+//   z-index: 1000;
+// }
+
+// .navbar {
+//   display: flex;
+//   justify-content: center; /* Ensures content aligns horizontally */
+//   align-items: center;
+//   height: 60px; /* Adjust height as needed */
+// }
+
+// .nav-container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   width: 100%;
+//   max-width: 1200px; /* Adjust container width as needed */
+//   padding: 0 20px; /* Add some padding for spacing */
+// }
+
+// .box-container {
+//   flex: 1;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .pointed-box {
+//   width: fit-content;
+//   padding: 10px 20px;
+//   border: 2px solid #000;
+//   border-radius: 25px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: #f9f9f9; /* Optional background for the box */
+// }
+
+// .logo {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-family: "Arial", sans-serif;
+//   font-size: 20px; /* Adjust font size */
+// }
+
+// .logo-part {
+//   margin: 0 3px;
+// }
+
+// .fancy {
+//   font-weight: bold;
+//   color: #ff5722; /* Add fancy color */
+// }
+
+// .normal {
+//   font-weight: bold;
+//   color: #333;
+// }
+
+// .faded {
+//   font-weight: normal;
+//   color: #aaa;
+// }
+
+// .secondMenu-container {
+//   flex: 1;
+//   display: flex;
+//   justify-content: flex-start;
+//   align-items: center;
+// }
+
+// .hamburger-container {
+//   flex: 1;
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
+// }

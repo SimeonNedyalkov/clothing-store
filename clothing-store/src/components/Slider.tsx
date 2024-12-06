@@ -6,19 +6,10 @@ const Slider = (props: { allClothes: Cloth[] }) => {
   useEffect(() => {
     if (Array.isArray(props.allClothes)) {
       const uniqueImages = new Set<string>();
-
-      // Add the first image of each item to the Set to ensure uniqueness
       props.allClothes.forEach((item) => {
         uniqueImages.add(item.images[0]);
       });
-
-      // Use map() to split the images and return an array of images
       const newArr = [...uniqueImages].map((x) => x.split(",")).flat();
-
-      // Log the newArr to verify the result
-      console.log(newArr);
-
-      // Set the result to the state
       setGetImages(newArr);
     }
   }, [props.allClothes]);
@@ -39,10 +30,9 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       <div className="slider">
         <div className="slides">
           <img
+            className="sliderImage"
             src={`${getImages[currentIndex]}`}
-            width="300"
-            height="300"
-            alt=""
+            alt={`${getImages[currentIndex]}`}
           />
         </div>
         <button className="prev" onClick={prevSlide}>
