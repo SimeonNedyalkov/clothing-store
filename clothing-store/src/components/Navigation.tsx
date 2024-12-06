@@ -3,6 +3,9 @@ import Cloth from "../types/Cloth";
 
 export default function Navigation(props: { allClothes: Cloth[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isShown, setIsShown] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
@@ -19,30 +22,60 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
   function handleClick() {
     setIsMenuOpen(!isMenuOpen);
   }
+  useEffect(() => {
+    setTimeout(() => {
+      setIsShown(true);
+    }, 2100);
+  });
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setIsMobile(true);
+    }
+  }, []);
   return (
     <>
       <div className="navbarWrapper">
         <div className="navbar">
           <div className="nav-container">
-            <div className="firstBar absolute top-10 left-10 flex gap-4 text-3xl bold antialiased font-serif">
-              <button className="group text-2xl font-bold cursor-pointer relative text-gray-800 hover:text-yellow-500">
-                Men
-              </button>
-              <button className="group text-2xl font-bold cursor-pointer relative text-gray-800 hover:text-yellow-500">
-                Women
-              </button>
-              <button className="group text-2xl font-bold cursor-pointer relative text-gray-800 hover:text-yellow-500">
-                Kids
-              </button>
+            <div className="firstBar">
+              {isMobile ? (
+                <>
+                  <button
+                    className="group"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  >
+                    {dropdownOpen ? "Menu" : "Close"}
+                  </button>
+                  {dropdownOpen ? (
+                    ""
+                  ) : (
+                    <div className="mobileDropdown">
+                      <button className="group">Men</button>
+                      <button className="group">Women</button>
+                      <button className="group">Kids</button>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <button className="group">Men</button>
+                  <button className="group">Women</button>
+                  <button className="group">Kids</button>
+                </>
+              )}
             </div>
             {/* Logo Section */}
             <div className="box-container">
               <div className="pointed-box">
-                <div className="logo">
-                  <span className="logo-part fancy">Le</span>
-                  <span className="logo-part normal">ni</span>
-                  <span className="logo-part faded">on</span>
-                </div>
+                {isShown ? (
+                  <div className="logo">
+                    <span className="logo-part fancy">Le</span>
+                    <span className="logo-part normal">ni</span>
+                    <span className="logo-part faded">on</span>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
               </div>
             </div>
 

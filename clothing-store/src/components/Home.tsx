@@ -36,18 +36,12 @@ export default function Home() {
     ],
   };
   return (
-    <div
-      className={`website-content ${
-        isWebsiteVisible
-          ? "visible home flex justify-center items-center justify-items-center flex-col"
-          : "home flex justify-center items-center justify-items-center flex-col"
-      }`}
-    >
-      <h1 className="text-3xl font-bold underline absolute">Hello world!</h1>
+    <div className={`website-content ${isWebsiteVisible ? "visible" : "home"}`}>
+      <h1 className="text-3xl">Hello world!</h1>
       <div className="">
         <div className="one"></div>
         {/* <img src={myImage} alt="" className="myImage" /> */}
-        <div className="selectCloth absolute">
+        <div className="selectCloth">
           <h1 className="">Select a Vehicle Type</h1>
           <p className="">
             As an automotive NVH designer, different types of vehicles confront
