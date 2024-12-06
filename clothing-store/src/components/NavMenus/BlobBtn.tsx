@@ -8,10 +8,22 @@ export default function BlobBtn({
   handleClickMobile?: () => void;
 }) {
   const [shown, setIsShown] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    setTimeout(() => {
-      setIsShown(true);
-    }, 2700);
+    if (window.innerWidth <= 768) {
+      setIsMobile(true);
+    }
+  }, []);
+  useEffect(() => {
+    if (isMobile == false) {
+      setTimeout(() => {
+        setIsShown(true);
+      }, 2700);
+    } else if (isMobile == true) {
+      setTimeout(() => {
+        setIsShown(true);
+      }, 2400);
+    }
   });
   return (
     <div className="buttons">
