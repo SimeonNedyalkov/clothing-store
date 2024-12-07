@@ -13,7 +13,6 @@ export default function Home(props: { allClothes: Cloth[] }) {
 
   return (
     <div className={`website-content ${isWebsiteVisible ? "visible" : "home"}`}>
-      <h1 className="">Hello world!</h1>
       <div className="homeSliderContainer">
         <div className="pointed-boxLeft"></div>
         <Slider allClothes={props.allClothes} />

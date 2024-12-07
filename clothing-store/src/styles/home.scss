@@ -10,6 +10,8 @@
 .website-content {
   height: 100vh;
   width: 100vw;
+  max-width: 100vw;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .pointed-boxLeft {
@@ -58,8 +61,8 @@
   height: 20rem;
   background-color: black;
   clip-path: polygon(15% 0, 15% 100%, 90% 75%, 90% 25%);
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: -1rem;
   top: 50%;
   transform: translateY(-50%);
   margin: 0;
@@ -77,8 +80,8 @@
   height: 20rem;
   background-color: black;
   clip-path: polygon(85% 0, 85% 100%, 10% 75%, 10% 25%);
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: -1rem;
   top: 50%;
   transform: translateY(-50%);
   margin: 0;
@@ -99,7 +102,7 @@
   }
   .pointed-boxLeft,
   .pointed-boxRight {
-    max-width: 2rem;
+    max-width: 3rem;
     max-height: 20rem;
   }
 }

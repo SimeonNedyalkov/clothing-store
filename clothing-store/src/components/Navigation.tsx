@@ -16,7 +16,7 @@ export default function Navigation(props: { allClothes: Cloth[] }) {
   useEffect(() => {
     setTimeout(() => {
       setIsShown(true);
-    }, 2100);
+    }, 2400);
   });
 
   return (
