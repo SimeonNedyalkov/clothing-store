@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import { GLTFResult } from "./threeDType";
-import { useFrame, useThree } from "react-three-fiber";
+import { useFrame } from "react-three-fiber";
 import glovesScene from "../../assets/threeD/srg_glove.glb";
 import { a } from "@react-spring/three";
 
@@ -21,94 +20,80 @@ export default function Gloves({
   setIsRotating,
   ...props
 }: GlovesProps) {
-  const { nodes, materials } = useGLTF(glovesScene) as GLTFResult;
-  const glovesRef = useRef();
-  const { gl, viewport } = useThree();
-  const lastX = useRef(0);
-  const rotationSpead = useRef(0);
-  const dampingFactor = 0.95;
-  const handlePointerDown = (e: Event) => {
-    e.stopPropagation();
-    e.preventDefault();
-    setIsRotating(true);
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    lastX.current = clientX;
-  };
-  const handlePointerUp = (e: Event) => {
-    e.stopPropagation();
-    e.preventDefault();
-    setIsRotating(false);
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const { nodes, materials } = useGLTF(glovesScene) as any;
+  const glovesRef = useRef<any>();
 
-    const delta = (clientX - lastX.current) / viewport.width;
-    glovesRef.current.rotation.y += delta * 0.01 * Math.PI;
-    lastX.current = clientX;
-    rotationSpead.current = delta * 0.01 * Math.PI;
+  const rotationSpeed = useRef(0);
+  const dampingFactor = 0.95;
+  const rotationStep = 0.01 * Math.PI;
+  const lastPointerX = useRef(0);
+  const isDragging = useRef(false);
+
+  const handlePointerDown = (e: PointerEvent) => {
+    isDragging.current = true;
+    setIsRotating(true);
+    lastPointerX.current = e.clientX;
   };
-  const handlePointerMove = (e: Event) => {
-    e.stopPropagation();
-    e.preventDefault();
-    if (isRotating) {
-      handlePointerUp(e);
-    }
+
+  const handlePointerUp = () => {
+    isDragging.current = false;
+    setIsRotating(false);
   };
-  const handleKeyDown = (e: any) => {
+
+  const handlePointerMove = (e: PointerEvent) => {
+    if (!isDragging.current || !glovesRef.current) return;
+
+    const deltaX = e.clientX - lastPointerX.current;
+    rotationSpeed.current = (deltaX / window.innerWidth) * Math.PI;
+    glovesRef.current.rotation.y += rotationSpeed.current;
+    lastPointerX.current = e.clientX;
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "ArrowLeft") {
-      if (!isRotating) setIsRotating(true);
-      glovesRef.current.rotation.y += 0.01 * Math.PI;
+      rotationSpeed.current = rotationStep;
+      setIsRotating(true);
     } else if (e.key === "ArrowRight") {
-      if (!isRotating) setIsRotating(true);
-      glovesRef.current.rotation.y -= 0.01 * Math.PI;
+      rotationSpeed.current = -rotationStep;
+      setIsRotating(true);
     }
   };
-  const handleKeyUp = (e: any) => {
+
+  const handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
       setIsRotating(false);
+      rotationSpeed.current = 0;
     }
   };
-  useEffect(() => {
-    document.addEventListener("pointerup", handlePointerUp),
-      document.addEventListener("pointerdown", handlePointerDown),
-      document.addEventListener("pointermove", handlePointerMove),
-      document.addEventListener("keydown", handleKeyDown),
-      document.addEventListener("keyup", handleKeyUp);
-    return () => {
-      document.removeEventListener("pointerup", handlePointerUp),
-        document.removeEventListener("pointerdown", handlePointerDown),
-        document.removeEventListener("pointermove", handlePointerMove),
-        document.removeEventListener("keydown", handleKeyDown),
-        document.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [gl, handlePointerDown, handlePointerMove, handlePointerUp]);
-  //   useFrame(()=>{
-  //     if(!isRotating){
-  //       rotationSpead.current *= dampingFactor;
-  //       if(Math.abs(rotationSpead.current) <0.001){
-  //         rotationSpead.current = 0
-  //       }
-  //     }else{
-  //       const rotation = glovesRef.current.rotation.y;
-  //       const normalizedRotation =
-  //   ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
 
-  // // Set the current stage based on the island's orientation
-  // switch (true) {
-  //   case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
-  //     setCurrentStage(4);
-  //     break;
-  //   case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
-  //     setCurrentStage(3);
-  //     break;
-  //   case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
-  //     setCurrentStage(2);
-  //     break;
-  //   case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
-  //     setCurrentStage(1);
-  //     break;
-  //   default:
-  //     setCurrentStage(null);
-  //     }
-  //   }})
+  useEffect(() => {
+    window.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("pointerup", handlePointerUp);
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
+
+  useFrame(() => {
+    if (!glovesRef.current) return;
+    if (!isRotating && !isDragging.current) {
+      rotationSpeed.current *= dampingFactor;
+      if (Math.abs(rotationSpeed.current) < 0.001) {
+        rotationSpeed.current = 0;
+      }
+    }
+
+    glovesRef.current.rotation.y += rotationSpeed.current;
+  });
+
   return (
     <a.group {...props} ref={glovesRef} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.113}>
