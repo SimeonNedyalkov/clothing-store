@@ -11,12 +11,12 @@ const Slider = (props: { allClothes: Cloth[] }) => {
   // 3d Cloth adjustments
   const adjustClothForScreen = () => {
     let screenScale = null;
-    let screenPosition = [0, -6.5, -43];
+    let screenPosition = [0, -12.5, -43];
     let rotation = [0.1, 4.7, 0];
     if (innerWidth < 768) {
-      screenScale = [9, 9, 9];
-    } else {
       screenScale = [10, 10, 10];
+    } else {
+      screenScale = [12, 12, 12];
     }
     return [screenScale, screenPosition, rotation];
   };
