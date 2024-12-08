@@ -6,6 +6,9 @@ import Gloves from "./threeD/Gloves";
 
 const Slider = (props: { allClothes: Cloth[] }) => {
   const [getImages, setGetImages] = useState<string[]>([]);
+  const [isRotating, setIsRotating] = useState(false);
+
+  // 3d Cloth adjustments
   const adjustClothForScreen = () => {
     let screenScale = null;
     let screenPosition = [0, -6.5, -43];
@@ -13,11 +16,15 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     if (innerWidth < 768) {
       screenScale = [15.5, 15.5, 15.5];
     } else {
-      screenScale = [20, 20, 20];
+      screenScale = [10, 10, 10];
     }
     return [screenScale, screenPosition, rotation];
   };
+
   const [clothScale, clothPosition, clothRotation] = adjustClothForScreen();
+  // rotating effect
+  useEffect(() => {}, []);
+  //getting images from server
   useEffect(() => {
     if (Array.isArray(props.allClothes)) {
       const uniqueImages = new Set<string>();
@@ -28,6 +35,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       setGetImages(newArr);
     }
   }, [props.allClothes]);
+  //making images switch
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -40,6 +48,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       (prevIndex) => (prevIndex - 1 + getImages.length) % getImages.length
     );
   };
+
   return (
     <div className="slider-container">
       <div className="slider">
@@ -47,8 +56,10 @@ const Slider = (props: { allClothes: Cloth[] }) => {
           <div className="pointed-boxLeft"></div>
           <div className="pointed-boxRight"></div>
           <Canvas
-            className=""
-            camera={{ position: [0, 0, 15], near: 0.1, far: 1000, fov: 75 }}
+            className={`canvas ${
+              isRotating ? "cursor-grabbing" : "cursor-grab"
+            }`}
+            camera={{ position: [0, 0, 15], near: 0.1, far: 1000, fov: 45 }}
           >
             <Suspense fallback={<LoaderForThreeFiber />}>
               <directionalLight position={[1, 1, 1]} intensity={2} />
@@ -58,6 +69,8 @@ const Slider = (props: { allClothes: Cloth[] }) => {
                 position={clothPosition}
                 scale={clothScale}
                 rotation={clothRotation}
+                isRotating={isRotating}
+                setIsRotating={setIsRotating}
               />
             </Suspense>
           </Canvas>
