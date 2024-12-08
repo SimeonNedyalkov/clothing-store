@@ -14,7 +14,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     let screenPosition = [0, -6.5, -43];
     let rotation = [0.1, 4.7, 0];
     if (innerWidth < 768) {
-      screenScale = [15.5, 15.5, 15.5];
+      screenScale = [9, 9, 9];
     } else {
       screenScale = [10, 10, 10];
     }
