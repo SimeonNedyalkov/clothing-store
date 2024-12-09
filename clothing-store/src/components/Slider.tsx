@@ -3,6 +3,7 @@ import Cloth from "../types/Cloth";
 import { Canvas } from "react-three-fiber";
 import LoaderForThreeFiber from "./LoaderForThreeFiber";
 import Gloves from "./threeD/Gloves";
+import Hoodie from "./threeD/Hoodie";
 
 const Slider = (props: { allClothes: Cloth[] }) => {
   const [getImages, setGetImages] = useState<string[]>([]);
@@ -72,6 +73,13 @@ const Slider = (props: { allClothes: Cloth[] }) => {
                 isRotating={isRotating}
                 setIsRotating={setIsRotating}
               />
+              {/* <Hoodie
+                position={clothPosition}
+                scale={clothScale}
+                rotation={clothRotation}
+                isRotating={isRotating}
+                setIsRotating={setIsRotating}
+              /> */}
             </Suspense>
           </Canvas>
           {/* <img
