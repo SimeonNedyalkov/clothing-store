@@ -54,7 +54,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  margin-top: -100px;
+  z-index: 1;
 }
 
 .pointed-boxLeft {
@@ -95,7 +97,90 @@
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.image-container {
+  position: relative;
+  margin-bottom: 22rem;
+}
+.background-image {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.cosmosCollection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  left: 8rem;
+  bottom: 5rem;
+  span {
+    font-size: 2.5rem;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+}
+// toggle button
+.toggleButtonContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  right: 8rem;
+  bottom: 5rem;
+  span {
+    font-size: 1rem;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    margin-left: 1rem;
+  }
+}
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
 
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 20px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 10px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: #000000;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 20px;
+}
 @media (max-width: 768px) {
   .sliderImage {
     width: 5rem;
@@ -105,5 +190,25 @@
   .pointed-boxRight {
     max-width: 3rem;
     max-height: 20rem;
+  }
+  .cosmosCollection {
+    font-size: 1rem;
+    left: 1rem;
+    bottom: 1rem;
+    span {
+      font-size: 1.5rem;
+    }
+  }
+  .toggleButtonContainer {
+    right: 1rem;
+    bottom: 1rem;
+  }
+  .newCollectionContainer {
+    span {
+      font-size: 0.7rem;
+    }
+  }
+  .addToCart {
+    font-size: 0.7rem;
   }
 }
