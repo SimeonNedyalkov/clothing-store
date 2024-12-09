@@ -101,10 +101,24 @@
   position: relative;
   margin-bottom: 22rem;
 }
+
 .background-image {
   width: 100%;
   height: auto;
   position: relative;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+}
+
+.visibleImage {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease-in-out, visibility 0s linear 0s;
+}
+.hiddenImage {
+  opacity: 0;
+  visibility: hidden;
 }
 .cosmosCollection {
   position: absolute;
