@@ -105,7 +105,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
             className={`canvas ${
               isRotating ? "cursor-grabbing" : "cursor-grab"
             }`}
-            camera={{ position: [0, 0, 11], near: 0.1, far: 1000, fov: 45 }}
+            camera={{ position: [0, 0, 15], near: 0.1, far: 1000, fov: 45 }}
           >
             <Suspense fallback={<LoaderForThreeFiber />}>
               <directionalLight position={[1, 1, 1]} intensity={2} />
