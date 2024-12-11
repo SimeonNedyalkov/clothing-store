@@ -22,7 +22,6 @@ export default function Gloves({
 }: GlovesProps) {
   const { nodes, materials } = useGLTF(glovesScene) as any;
   const glovesRef = useRef<any>();
-
   const rotationSpeed = useRef(0);
   const dampingFactor = 0.95;
   const rotationStep = 0.01 * Math.PI;
@@ -67,19 +66,21 @@ export default function Gloves({
   };
 
   useEffect(() => {
-    window.addEventListener("pointerdown", handlePointerDown);
-    window.addEventListener("pointerup", handlePointerUp);
-    window.addEventListener("pointermove", handlePointerMove);
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
+    if (isRotating) {
+      window.addEventListener("pointerdown", handlePointerDown);
+      window.addEventListener("pointerup", handlePointerUp);
+      window.addEventListener("pointermove", handlePointerMove);
+      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("keyup", handleKeyUp);
 
-    return () => {
-      window.removeEventListener("pointerdown", handlePointerDown);
-      window.removeEventListener("pointerup", handlePointerUp);
-      window.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
+      return () => {
+        window.removeEventListener("pointerdown", handlePointerDown);
+        window.removeEventListener("pointerup", handlePointerUp);
+        window.removeEventListener("pointermove", handlePointerMove);
+        window.removeEventListener("keydown", handleKeyDown);
+        window.removeEventListener("keyup", handleKeyUp);
+      };
+    }
   }, []);
 
   useFrame(() => {

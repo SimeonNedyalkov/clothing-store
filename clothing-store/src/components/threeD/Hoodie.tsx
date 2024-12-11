@@ -67,19 +67,21 @@ export default function Hoodie({
   };
 
   useEffect(() => {
-    window.addEventListener("pointerdown", handlePointerDown);
-    window.addEventListener("pointerup", handlePointerUp);
-    window.addEventListener("pointermove", handlePointerMove);
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
+    if (isRotating) {
+      window.addEventListener("pointerdown", handlePointerDown);
+      window.addEventListener("pointerup", handlePointerUp);
+      window.addEventListener("pointermove", handlePointerMove);
+      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("keyup", handleKeyUp);
 
-    return () => {
-      window.removeEventListener("pointerdown", handlePointerDown);
-      window.removeEventListener("pointerup", handlePointerUp);
-      window.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
+      return () => {
+        window.removeEventListener("pointerdown", handlePointerDown);
+        window.removeEventListener("pointerup", handlePointerUp);
+        window.removeEventListener("pointermove", handlePointerMove);
+        window.removeEventListener("keydown", handleKeyDown);
+        window.removeEventListener("keyup", handleKeyUp);
+      };
+    }
   }, []);
 
   useFrame(() => {
@@ -96,7 +98,7 @@ export default function Hoodie({
 
   return (
     <a.group {...props} ref={hoodieRef} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.002}>
+      <group rotation={[-Math.PI / 2, 0, 2]} scale={0.002}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             castShadow

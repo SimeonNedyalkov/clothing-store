@@ -10,6 +10,9 @@
   position: relative;
   height: 23rem;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slides {
@@ -19,6 +22,8 @@
   width: 50%;
   height: 100%;
   z-index: 1000;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide {
@@ -29,7 +34,23 @@
   background-position: center;
   z-index: 1000;
 }
-
+.currentSlide {
+  display: flex;
+  min-width: 25rem;
+  height: 25rem;
+}
+.prevSlide {
+  display: flex;
+  min-width: 25rem;
+  height: 25rem;
+  transform: scale(1);
+}
+.nextSlide {
+  display: flex;
+  min-width: 25rem;
+  height: 25rem;
+  transform: scale(1);
+}
 /* Navigation buttons */
 button {
   position: fixed;

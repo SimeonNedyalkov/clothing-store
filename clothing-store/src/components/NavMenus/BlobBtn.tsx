@@ -24,7 +24,8 @@ export default function BlobBtn({
         setIsShown(true);
       }, 2400);
     }
-  });
+  }, []);
+
   return (
     <div className="buttons">
       <button className="blob-btn" onClick={handleClickMobile}>
