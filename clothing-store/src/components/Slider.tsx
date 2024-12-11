@@ -4,11 +4,12 @@ import { Canvas } from "react-three-fiber";
 import LoaderForThreeFiber from "./LoaderForThreeFiber";
 import Gloves from "./threeD/Gloves";
 import Hoodie from "./threeD/Hoodie";
+import Shoes from "./threeD/Shoes";
 
 const Slider = (props: { allClothes: Cloth[] }) => {
   const [getImages, setGetImages] = useState<string[]>([]);
   const [isRotating, setIsRotating] = useState(false);
-  const current3Ditems = ["Gloves", "Hoodie"];
+  const current3Ditems = ["Gloves", "Hoodie", "Shoes"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // 3d Cloth adjustments
@@ -24,6 +25,9 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       } else if (currentIndex == 1) {
         screenScale = [12, 12, 12];
         screenPosition = [0, -35.5, -34];
+      } else if (currentIndex == 2) {
+        screenScale = [8, 8, 8];
+        screenPosition = [0, -25.5, -34];
       }
     } else {
       if (currentIndex == 0) {
@@ -32,6 +36,9 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       } else if (currentIndex == 1) {
         screenScale = [14, 14, 14];
         screenPosition = [0, -40.5, -34];
+      } else if (currentIndex == 2) {
+        screenScale = [8, 8, 8];
+        screenPosition = [0, -10, -45];
       }
     }
     return [screenScale, screenPosition, rotation];
@@ -85,6 +92,16 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     } else if (currentIndex == 1) {
       return (
         <Hoodie
+          position={clothPosition}
+          scale={clothScale}
+          rotation={clothRotation}
+          isRotating={isRotating}
+          setIsRotating={setIsRotating}
+        />
+      );
+    } else if (currentIndex == 2) {
+      return (
+        <Shoes
           position={clothPosition}
           scale={clothScale}
           rotation={clothRotation}
