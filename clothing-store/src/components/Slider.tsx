@@ -5,7 +5,6 @@ import LoaderForThreeFiber from "./LoaderForThreeFiber";
 import Gloves from "./threeD/Gloves";
 import Hoodie from "./threeD/Hoodie";
 import Shoes from "./threeD/Shoes";
-import { useSpring, animated } from "react-spring";
 interface ClothThreeD {
   screenScale: [number, number, number];
   screenPosition: [number, number, number];
@@ -60,7 +59,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
 
   const [clothScale, clothPosition, clothRotation] = adjustClothForScreen();
   // rotating effect
-  useEffect(() => {}, []);
+  useEffect(() => {}, [currentIndex]);
   //getting images from server
   useEffect(() => {
     if (Array.isArray(props.allClothes)) {
@@ -135,6 +134,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     fov: number;
   };
   console.log(previousIndex);
+  //1
   const getCameraSettings = (index: number) => {
     switch (index) {
       case 2:
@@ -144,18 +144,43 @@ const Slider = (props: { allClothes: Cloth[] }) => {
         };
       case 0:
         return {
-          position: [0, 15, 15] as [number, number, number],
-          fov: 65,
+          position: [0, 20, 30] as [number, number, number],
+          fov: 75,
         };
       case 1:
         return {
-          position: [0, 75, 30] as [number, number, number],
+          position: [0, -1, 30] as [number, number, number],
+          fov: 15,
+        };
+      default:
+        return {
+          position: [0, 0, 20] as [number, number, number],
+          fov: 50,
+        };
+    }
+  };
+  //2
+  const getCameraSettings2 = (index: number) => {
+    switch (index) {
+      case 2:
+        return {
+          position: [15, 20, 30] as [number, number, number],
+          fov: 100,
+        };
+      case 0:
+        return {
+          position: [0, 2, 15] as [number, number, number],
+          fov: 35,
+        };
+      case 1:
+        return {
+          position: [0, -12, 30] as [number, number, number],
           fov: 35,
         };
       default:
         return {
-          position: [0, 0, 20] as [number, number, number], // Default camera position
-          fov: 50, // Default fov
+          position: [0, 0, 20] as [number, number, number],
+          fov: 50,
         };
     }
   };
@@ -164,58 +189,10 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     [previousIndex]
   );
   const cameraSettings2 = useMemo(
-    () => getCameraSettings(nextIndex),
+    () => getCameraSettings2(nextIndex),
     [nextIndex]
   );
-  // useEffect(() => {}, [currentIndex]);
-  // useEffect(() => {
-  //   if (previousIndex === 0) {
-  //     setCameraPos1({
-  //       position: [0, 50, 70],
-  //       near: 0.1,
-  //       far: 1000,
-  //       fov: 75,
-  //     });
-  //   } else if (previousIndex === 1) {
-  //     setCameraPos1({
-  //       position: [0, 30, 65],
-  //       near: 0.1,
-  //       far: 1000,
-  //       fov: 65,
-  //     });
-  //   } else if (previousIndex == 2) {
-  //     setCameraPos1({
-  //       position: [0, 0, 30],
-  //       near: 0.1,
-  //       far: 1000,
-  //       fov: 75,
-  //     });
-  //   }
-  // }, [previousIndex]);
-  // const getCameraSettingsItem2 = useMemo((): Camera => {
-  //   if (currentIndex === 0) {
-  //     return {
-  //       position: [0, -15, 30],
-  //       near: 0.1,
-  //       far: 1000,
-  //       fov: 35,
-  //     };
-  //   } else if (currentIndex === 1) {
-  //     return {
-  //       position: [0, 0, 25],
-  //       near: 0.1,
-  //       far: 1000,
-  //       fov: 45,
-  //     };
-  //   } else {
-  //     return {
-  //       position: [0, 7, 20],
-  //       near: 0.1,
-  //       far: 1000,
-  //       fov: 95,
-  //     };
-  //   }
-  // }, [currentIndex]);
+
   console.log(`prev index : ${previousIndex}`);
   console.log(`current index : ${currentIndex}`);
   console.log(`next index : ${nextIndex}`);
@@ -290,14 +267,15 @@ const Slider = (props: { allClothes: Cloth[] }) => {
               </div>
               <div className="nextSlide">
                 <Canvas
+                  key={`canvas-${nextIndex}`}
                   className={`canvas ${
                     isRotating ? "cursor-grabbing" : "cursor-grab"
                   }`}
                   camera={{
-                    position: [0, -15, 30],
+                    position: cameraSettings2.position,
                     near: 0.1,
                     far: 1000,
-                    fov: 35,
+                    fov: cameraSettings2.fov,
                   }}
                 >
                   <Suspense fallback={<LoaderForThreeFiber />}>
