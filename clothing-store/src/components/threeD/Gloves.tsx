@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 import glovesScene from "../../assets/threeD/srg_glove.glb";
 import { a } from "@react-spring/three";
 

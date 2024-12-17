@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import Cloth from "../types/Cloth";
-import { Canvas } from "react-three-fiber";
+import { Canvas } from "@react-three/fiber";
 import LoaderForThreeFiber from "./LoaderForThreeFiber";
 import Gloves from "./threeD/Gloves";
 import Hoodie from "./threeD/Hoodie";
@@ -223,68 +223,70 @@ const Slider = (props: { allClothes: Cloth[] }) => {
             </div>
           ) : (
             <>
-              <div className="prevSlide">
-                <Canvas
-                  key={`canvas-${currentIndex}`}
-                  className={`canvas ${
-                    isRotating ? "cursor-grabbing" : "cursor-grab"
-                  }`}
-                  camera={{
-                    position: cameraSettings1.position,
-                    near: 0.1,
-                    far: 1000,
-                    fov: cameraSettings1.fov,
-                  }}
-                >
-                  <Suspense fallback={<LoaderForThreeFiber />}>
-                    <directionalLight position={[1, 1, 1]} intensity={2} />
-                    <ambientLight intensity={0.5} />
-                    <hemisphereLight groundColor="#000000" intensity={1} />
-                    {renderCloth(previousIndex, false)}
-                  </Suspense>
-                </Canvas>
-              </div>
-              <div className="currentSlide">
-                <Canvas
-                  key={`canvas-${currentIndex}`}
-                  className={`canvas ${
-                    isRotating ? "cursor-grabbing" : "cursor-grab"
-                  }`}
-                  camera={{
-                    position: [0, 0, 15],
-                    near: 0.1,
-                    far: 1000,
-                    fov: 45,
-                  }}
-                >
-                  <Suspense fallback={<LoaderForThreeFiber />}>
-                    <directionalLight position={[1, 1, 1]} intensity={2} />
-                    <ambientLight intensity={0.5} />
-                    <hemisphereLight groundColor="#000000" intensity={1} />
-                    {renderCloth(currentIndex, true)}
-                  </Suspense>
-                </Canvas>
-              </div>
-              <div className="nextSlide">
-                <Canvas
-                  key={`canvas-${nextIndex}`}
-                  className={`canvas ${
-                    isRotating ? "cursor-grabbing" : "cursor-grab"
-                  }`}
-                  camera={{
-                    position: cameraSettings2.position,
-                    near: 0.1,
-                    far: 1000,
-                    fov: cameraSettings2.fov,
-                  }}
-                >
-                  <Suspense fallback={<LoaderForThreeFiber />}>
-                    <directionalLight position={[1, 1, 1]} intensity={2} />
-                    <ambientLight intensity={0.5} />
-                    <hemisphereLight groundColor="#000000" intensity={1} />
-                    {renderCloth(nextIndex, false)}
-                  </Suspense>
-                </Canvas>
+              <div className="wrappingCanvas">
+                <div className="prevSlide">
+                  <Canvas
+                    key={`canvas-${currentIndex}`}
+                    className={`canvas ${
+                      isRotating ? "cursor-grabbing" : "cursor-grab"
+                    }`}
+                    camera={{
+                      position: cameraSettings1.position,
+                      near: 0.1,
+                      far: 1000,
+                      fov: cameraSettings1.fov,
+                    }}
+                  >
+                    <Suspense fallback={<LoaderForThreeFiber />}>
+                      <directionalLight position={[1, 1, 1]} intensity={2} />
+                      <ambientLight intensity={0.5} />
+                      <hemisphereLight groundColor="#000000" intensity={1} />
+                      {renderCloth(previousIndex, false)}
+                    </Suspense>
+                  </Canvas>
+                </div>
+                <div className="currentSlide">
+                  <Canvas
+                    key={`canvas-${currentIndex}`}
+                    className={`canvas ${
+                      isRotating ? "cursor-grabbing" : "cursor-grab"
+                    }`}
+                    camera={{
+                      position: [0, 0, 15],
+                      near: 0.1,
+                      far: 1000,
+                      fov: 45,
+                    }}
+                  >
+                    <Suspense fallback={<LoaderForThreeFiber />}>
+                      <directionalLight position={[1, 1, 1]} intensity={2} />
+                      <ambientLight intensity={0.5} />
+                      <hemisphereLight groundColor="#000000" intensity={1} />
+                      {renderCloth(currentIndex, true)}
+                    </Suspense>
+                  </Canvas>
+                </div>
+                <div className="nextSlide">
+                  <Canvas
+                    key={`canvas-${nextIndex}`}
+                    className={`canvas ${
+                      isRotating ? "cursor-grabbing" : "cursor-grab"
+                    }`}
+                    camera={{
+                      position: cameraSettings2.position,
+                      near: 0.1,
+                      far: 1000,
+                      fov: cameraSettings2.fov,
+                    }}
+                  >
+                    <Suspense fallback={<LoaderForThreeFiber />}>
+                      <directionalLight position={[1, 1, 1]} intensity={2} />
+                      <ambientLight intensity={0.5} />
+                      <hemisphereLight groundColor="#000000" intensity={1} />
+                      {renderCloth(nextIndex, false)}
+                    </Suspense>
+                  </Canvas>
+                </div>
               </div>
             </>
           )}
