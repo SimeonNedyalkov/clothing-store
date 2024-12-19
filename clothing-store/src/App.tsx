@@ -5,6 +5,7 @@ import "swiper/swiper-bundle.css";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader";
+import Cart from "./components/Cart";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home allClothes={allClothes}></Home>}></Route>
       </Routes>
+      {/* <Cart allClothes={allClothes}></Cart> */}
     </>
   );
 }

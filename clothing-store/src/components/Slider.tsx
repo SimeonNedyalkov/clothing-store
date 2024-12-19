@@ -115,7 +115,6 @@ const Slider = (props: { allClothes: Cloth[] }) => {
   const renderCloth = (index: number) => {
     const [clothScale, clothPosition, clothRotation] =
       adjustClothForScreen(index);
-
     if (index === 0) {
       return (
         <Gloves
@@ -153,7 +152,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     return null;
   };
   const CameraHandler = () => {
-    const cameraControls = useRef(null);
+    const cameraControls = useRef<CameraControls | null>(null);
 
     useEffect(() => {
       if (!cameraControls.current) return;
@@ -164,7 +163,7 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       <CameraControls
         ref={cameraControls}
         touches={{ one: 0, two: 0, three: 0 }}
-        mouseButtons={{ left: 0, middle: 0, right: 0 }}
+        mouseButtons={{ left: 0, middle: 0, right: 0, wheel: 0 }}
       />
     );
   };
@@ -203,10 +202,10 @@ const Slider = (props: { allClothes: Cloth[] }) => {
                 </Suspense>
               </Canvas>
             </div>
-            <button className="prev" onClick={prevSlide}>
+            <button className="buttonsPrevAndNext prev" onClick={prevSlide}>
               ❮
             </button>
-            <button className="next" onClick={nextSlide}>
+            <button className="buttonsPrevAndNext next" onClick={nextSlide}>
               ❯
             </button>
           </div>
@@ -235,10 +234,10 @@ const Slider = (props: { allClothes: Cloth[] }) => {
                 </Suspense>
               </Canvas>
             </div>
-            <button className="prev" onClick={prevSlide}>
+            <button className="buttonsPrevAndNext prev" onClick={prevSlide}>
               ❮
             </button>
-            <button className="next" onClick={nextSlide}>
+            <button className="buttonsPrevAndNext next" onClick={nextSlide}>
               ❯
             </button>
           </div>

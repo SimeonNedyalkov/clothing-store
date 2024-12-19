@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
 import Cloth from "../../types/Cloth";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toggleCart } from "../reduxstore/store";
 
 export default function Hamburger(props: { allClothes: Cloth[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
+
+  const dispatch = useDispatch();
+  const handleCartClick = (e: any) => {
+    e.preventDefault();
+    dispatch(toggleCart());
+  };
+
   useEffect(() => {
     if (Array.isArray(props.allClothes)) {
       const uniqueCategories = new Set<string>();
@@ -101,7 +111,9 @@ export default function Hamburger(props: { allClothes: Cloth[] }) {
         </div>
         <a href="#brand">Brand</a>
         <a href="#ranking">Ranking</a>
-        <a href="#cart">Cart</a>
+        <Link onClick={handleCartClick} to="/">
+          Cart
+        </Link>
         <a href="#about">About</a>
         <a href="#qa">Q&A</a>
       </div>

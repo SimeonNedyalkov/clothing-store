@@ -48,7 +48,7 @@
   transform: scale(1);
 }
 /* Navigation buttons */
-button {
+.buttonsPrevAndNext {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -71,7 +71,7 @@ button {
   z-index: 1000;
 }
 
-button:hover {
+.buttonsPrevAndNext:hover {
   background: rgba(0, 0, 0, 0.7);
 }
 .canvas {

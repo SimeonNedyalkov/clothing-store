@@ -5,14 +5,14 @@ import glovesScene from "/threeD/scp-glove.glb";
 import { a } from "@react-spring/three";
 
 interface PropsInterface {
-  position: [number, number, number];
-  scale: [number, number, number];
-  rotation: [number, number, number];
+  position: [number, number, number] | null;
+  scale: [number, number, number] | null;
+  rotation: [number, number, number] | null;
 }
 interface GlovesProps {
+  props: PropsInterface;
   isRotating: boolean;
   setIsRotating: (value: boolean) => void;
-  props: PropsInterface;
 }
 
 export default function Gloves({

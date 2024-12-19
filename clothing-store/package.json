@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
     "@react-spring/three": "^9.7.5",
     "@react-three/drei": "^9.120.3",
     "@react-three/fiber": "^8.17.10",
