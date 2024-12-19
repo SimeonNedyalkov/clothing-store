@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import glovesScene from "/threeD/srg_glove.glb";
+import glovesScene from "/threeD/scp-glove.glb";
 import { a } from "@react-spring/three";
 
 interface PropsInterface {
@@ -97,24 +97,13 @@ export default function Gloves({
 
   return (
     <a.group {...props} ref={glovesRef} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.113}>
+      <group rotation={[-Math.PI / 2, 5, 5]} scale={0.113}>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_2.geometry}
-          material={materials.defaultMat}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_3.geometry}
-          material={materials.defaultMat}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_4.geometry}
-          material={materials.defaultMat}
+          material={materials.headdefault}
+          rotation={[-Math.PI / 2, 0, 0]}
         />
       </group>
     </a.group>
