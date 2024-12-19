@@ -208,21 +208,31 @@ label:active:after {
   .cosmosCollection {
     font-size: 1rem;
     left: 1rem;
-    bottom: 1rem;
+    bottom: 5.5rem;
     span {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
   .toggleButtonContainer {
     right: 1rem;
-    bottom: 1rem;
+    bottom: 5.5rem;
   }
   .newCollectionContainer {
     span {
       font-size: 0.7rem;
+      visibility: hidden;
+    }
+    .newCollectionContainerTextN {
+      width: 6rem;
+      white-space: normal;
+    }
+    .addToCart {
+      visibility: visible;
+      font-size: 0.7rem;
     }
   }
   .addToCart {
+    visibility: visible;
     font-size: 0.7rem;
   }
 }

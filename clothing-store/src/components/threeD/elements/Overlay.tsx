@@ -2,6 +2,7 @@ import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { scenes } from "../../Slider";
 import maleicon from "../../../assets/malefemalekid/male-1364-svgrepo-com.svg";
+
 export const slideAtom = atom(0);
 
 export const Overlay = () => {
@@ -9,12 +10,14 @@ export const Overlay = () => {
   const [displaySlide, setDisplaySlide] = useState(slide);
   const [visible, setVisible] = useState(false);
   const [windowVisible, setWindowVisible] = useState(false);
+
   useEffect(() => {
     setTimeout(() => {
       setWindowVisible(false);
       setWindowVisible(true);
     }, 2000);
   }, []);
+
   useEffect(() => {
     setTimeout(() => {
       setVisible(true);
@@ -28,6 +31,7 @@ export const Overlay = () => {
       setVisible(true);
     }, 1000);
   }, [slide]);
+
   return (
     <>
       <div
@@ -36,7 +40,7 @@ export const Overlay = () => {
         } transition-opacity duration-1000`}
       >
         <svg
-          className="w-40 mx-auto mt-8"
+          className="w-10 mx-auto mt-8"
           viewBox="0 0 342 35"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -55,7 +59,7 @@ export const Overlay = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-10 h-10 pointer-events-auto hover:opacity-60 transition-opacity cursor-pointer"
+            className="w-2 h-10 pointer-events-auto hover:opacity-60 transition-opacity cursor-pointer"
           >
             <path
               strokeLinecap="round"
@@ -70,7 +74,7 @@ export const Overlay = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-10 h-10 pointer-events-auto hover:opacity-60 transition-opacity cursor-pointer"
+            className="w-2 h-10 pointer-events-auto hover:opacity-60 transition-opacity cursor-pointer"
             onClick={() =>
               setSlide((prev) => (prev < scenes.length - 1 ? prev + 1 : 0))
             }
@@ -82,11 +86,11 @@ export const Overlay = () => {
             />
           </svg>
         </div>
-        <div className="bg-gradient-to-t from-white/90 pt-20 pb-10 p-4 flex items-center flex-col text-center">
-          <h1 className="text-5xl font-extrabold">
+        <div className="bottomPart bg-gradient-to-t from-white/90 pt-20 pb-10 p-4 flex items-center flex-col text-center">
+          <h1 className="overlayName text-5xl font-extrabold">
             {scenes[displaySlide].name}
           </h1>
-          <p className="text-opacity-60 italic">
+          <p className="overlayDesc text-opacity-60 italic">
             {scenes[displaySlide].description}
           </p>
           <div className="flex items-center gap-12 mt-10">

@@ -62,13 +62,13 @@ const Slider = (props: { allClothes: Cloth[] }) => {
     if (innerWidth < 768) {
       if (index === 0) {
         screenScale = [10, 10, 10];
-        screenPosition = [-15, -12.5, -43]; // Position for Gloves
+        screenPosition = [0, -25.5, -43]; // Position for Gloves
       } else if (index === 1) {
-        screenScale = [12, 12, 12];
-        screenPosition = [0, -35.5, -34]; // Position for Hoodie
+        screenScale = [14, 14, 14];
+        screenPosition = [0, -45.5, -34]; // Position for Hoodie
       } else if (index === 2) {
         screenScale = [5, 5, 5];
-        screenPosition = [15, -10.5, -45]; // Position for Shoes
+        screenPosition = [0, -20.5, -45]; // Position for Shoes
       }
     } else {
       if (index === 0) {
@@ -178,37 +178,73 @@ const Slider = (props: { allClothes: Cloth[] }) => {
   };
 
   return (
-    <div className="slider-container">
-      <div className="slider">
-        <Leva hidden />
-        {isOverlayVisible ? <Overlay /> : <div />}
+    <>
+      {isMobile ? (
+        <div className="slider-container">
+          <div className="slider">
+            <Leva hidden />
+            {isOverlayVisible ? <Overlay /> : <div />}
 
-        <div className="currentSlide">
-          <Canvas
-            key={`canvas-${slide}`}
-            className={`canvas ${
-              isRotating ? "cursor-grabbing" : "cursor-grab"
-            }`}
-            camera={{ position: [0, 0, 50], near: 0.1, far: 1000, fov: 45 }}
-          >
-            <Suspense fallback={<LoaderForThreeFiber />}>
-              <CameraHandler />
-              <directionalLight position={[1, 1, 1]} intensity={2} />
-              <ambientLight intensity={0.5} />
-              <hemisphereLight groundColor="#000000" intensity={1} />
-              {/* Render all cloth items */}
-              {scenes.map((_, index) => renderCloth(index))}
-            </Suspense>
-          </Canvas>
+            <div className="currentSlide">
+              <Canvas
+                key={`canvas-${slide}`}
+                className={`canvas ${
+                  isRotating ? "cursor-grabbing" : "cursor-grab"
+                }`}
+                camera={{ position: [0, 0, 50], near: 0.1, far: 1000, fov: 45 }}
+              >
+                <Suspense fallback={<LoaderForThreeFiber />}>
+                  <CameraHandler />
+                  <directionalLight position={[1, 1, 1]} intensity={2} />
+                  <ambientLight intensity={0.5} />
+                  <hemisphereLight groundColor="#000000" intensity={1} />
+                  {/* Render all cloth items */}
+                  {renderCloth(slide)}
+                </Suspense>
+              </Canvas>
+            </div>
+            <button className="prev" onClick={prevSlide}>
+              ❮
+            </button>
+            <button className="next" onClick={nextSlide}>
+              ❯
+            </button>
+          </div>
         </div>
-        <button className="prev" onClick={prevSlide}>
-          ❮
-        </button>
-        <button className="next" onClick={nextSlide}>
-          ❯
-        </button>
-      </div>
-    </div>
+      ) : (
+        <div className="slider-container">
+          <div className="slider">
+            <Leva hidden />
+            {isOverlayVisible ? <Overlay /> : <div />}
+
+            <div className="currentSlide">
+              <Canvas
+                key={`canvas-${slide}`}
+                className={`canvas ${
+                  isRotating ? "cursor-grabbing" : "cursor-grab"
+                }`}
+                camera={{ position: [0, 0, 50], near: 0.1, far: 1000, fov: 45 }}
+              >
+                <Suspense fallback={<LoaderForThreeFiber />}>
+                  <CameraHandler />
+                  <directionalLight position={[1, 1, 1]} intensity={2} />
+                  <ambientLight intensity={0.5} />
+                  <hemisphereLight groundColor="#000000" intensity={1} />
+                  {/* Render all cloth items */}
+                  {scenes.map((_, index) => renderCloth(index))}
+                </Suspense>
+              </Canvas>
+            </div>
+            <button className="prev" onClick={prevSlide}>
+              ❮
+            </button>
+            <button className="next" onClick={nextSlide}>
+              ❯
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

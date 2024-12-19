@@ -44,7 +44,9 @@ export default function Home(props: { allClothes: Cloth[] }) {
 
       <div className="toggleButtonContainer justify-items-end content-end items-end">
         <div className="newCollectionContainer flex flex-col justify-items-end content-end items-end">
-          <span className="">Newest collection on LENION</span>
+          <span className="newCollectionContainerTextN">
+            Newest collection on LENION
+          </span>
           <span className="">with integrated AI</span>
           <div className="flex flex-row mt-2">
             <input type="checkbox" id="switch" />
