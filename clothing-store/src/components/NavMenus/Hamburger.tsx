@@ -111,7 +111,7 @@ export default function Hamburger(props: { allClothes: Cloth[] }) {
         </div>
         <a href="#brand">Brand</a>
         <a href="#ranking">Ranking</a>
-        <Link onClick={handleCartClick} to="/">
+        <Link onClick={handleCartClick} to="#">
           Cart
         </Link>
         <a href="#about">About</a>

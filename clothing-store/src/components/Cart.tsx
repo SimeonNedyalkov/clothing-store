@@ -10,6 +10,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Cloth from "../types/Cloth";
 import { useDispatch, useSelector } from "react-redux";
+import { closeCart, toggleCart, useTypedSelector } from "./reduxstore/store";
 const products = [
   {
     id: 1,
@@ -39,14 +40,20 @@ const products = [
 ];
 
 export default function Cart(props: { allClothes: Cloth[] }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   console.log(props.allClothes);
-  const isCartOpen = useSelector((state) => state.cart.isCartOpen);
+  const isCartOpen = useTypedSelector((state) => state.cart.isCartOpen);
   const dispatch = useDispatch();
 
   return (
     <>
-      <Dialog open={open} onClose={setOpen} className="relative z-10">
+      <Dialog
+        open={open}
+        onClose={() => {
+          dispatch(closeCart());
+        }}
+        className="relative z-10"
+      >
         <DialogBackdrop
           transition
           className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"

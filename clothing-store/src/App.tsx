@@ -41,7 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home allClothes={allClothes}></Home>}></Route>
       </Routes>
-      {/* <Cart allClothes={allClothes}></Cart> */}
+      <Cart allClothes={allClothes}></Cart>
     </>
   );
 }
