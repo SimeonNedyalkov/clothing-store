@@ -1,13 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import hoodieScene from "../../assets/threeD/hoodie.glb";
+import hoodieScene from "/threeD/hoodie.glb";
 import { a } from "@react-spring/three";
 
 interface PropsInterface {
-  position: number[];
-  scale: number[];
-  rotation: number[];
+  position: [number, number, number];
+  scale: [number, number, number];
+  rotation: [number, number, number];
 }
 interface HoodieProps {
   isRotating: boolean;

@@ -29,8 +29,7 @@ function App() {
     };
     fetchClothes();
   }, []);
-  console.log(allClothes);
-  console.log(isWebsiteVisible);
+
   return (
     <>
       <Loader></Loader>
