@@ -3,7 +3,7 @@ import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: { isCartOpen: false },
+  initialState: { isCartOpen: false, isChatBotOpen: false },
   reducers: {
     toggleCart(state) {
       state.isCartOpen = !state.isCartOpen;
@@ -14,9 +14,13 @@ const cartSlice = createSlice({
     openCart(state) {
       state.isCartOpen = true;
     },
+    toggleChatBot(state) {
+      state.isChatBotOpen = !state.isChatBotOpen;
+    },
   },
 });
-export const { toggleCart, closeCart, openCart } = cartSlice.actions;
+export const { toggleCart, closeCart, openCart, toggleChatBot } =
+  cartSlice.actions;
 
 const store = configureStore({
   reducer: {

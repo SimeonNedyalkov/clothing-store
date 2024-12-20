@@ -8,6 +8,7 @@ import Loader from "./components/Loader";
 import Cart from "./components/Cart";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
+import ChatBot from "./components/Q&A/Chatbot";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -45,8 +46,10 @@ function App() {
         {/* User */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/qanda" element={<ChatBot />} />
       </Routes>
       <Cart></Cart>
+      <ChatBot />
     </>
   );
 }

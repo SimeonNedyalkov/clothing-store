@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Cloth from "../../types/Cloth";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useTypedSelector, openCart } from "../reduxstore/store";
+import { useTypedSelector, openCart, toggleChatBot } from "../reduxstore/store";
 
 export default function Hamburger(props: { allClothes: Cloth[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +12,10 @@ export default function Hamburger(props: { allClothes: Cloth[] }) {
   const handleCartClick = (e: any) => {
     e.preventDefault();
     dispatch(openCart());
+  };
+  const handleChatBotClick = (e: any) => {
+    e.preventDefault();
+    dispatch(toggleChatBot());
   };
 
   useEffect(() => {
@@ -131,9 +135,9 @@ export default function Hamburger(props: { allClothes: Cloth[] }) {
             <a href="#about" className="nav-link">
               About
             </a>
-            <a href="#qa" className="nav-link">
+            <Link to="#" onClick={handleChatBotClick} className="nav-link">
               Q&A
-            </a>
+            </Link>
           </div>
         </>
       ) : (
