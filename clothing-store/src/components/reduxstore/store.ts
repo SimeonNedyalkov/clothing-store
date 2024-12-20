@@ -16,7 +16,7 @@ const cartSlice = createSlice({
     },
   },
 });
-export const { toggleCart, closeCart } = cartSlice.actions;
+export const { toggleCart, closeCart, openCart } = cartSlice.actions;
 
 const store = configureStore({
   reducer: {

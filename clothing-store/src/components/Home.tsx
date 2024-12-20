@@ -51,7 +51,9 @@ export default function Home(props: { allClothes: Cloth[] }) {
           <div className="flex flex-row mt-2">
             <input type="checkbox" id="switch" />
             {isWebsiteVisibleToggle ? (
-              <label htmlFor="switch">Toggle</label>
+              <label className="addToCartButton" htmlFor="switch">
+                Toggle
+              </label>
             ) : (
               <div></div>
             )}

@@ -6,6 +6,7 @@ import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader";
 import Cart from "./components/Cart";
+import Login from "./components/user/Login";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
       <Navigation allClothes={allClothes} />
       <Routes>
         <Route path="/" element={<Home allClothes={allClothes}></Home>}></Route>
+        {/* User */}
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Cart allClothes={allClothes}></Cart>
     </>

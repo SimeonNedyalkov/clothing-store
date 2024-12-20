@@ -160,7 +160,7 @@ input[type="checkbox"] {
   visibility: hidden;
 }
 
-label {
+.addToCartButton {
   cursor: pointer;
   text-indent: -9999px;
   width: 50px;
@@ -171,7 +171,7 @@ label {
   position: relative;
 }
 
-label:after {
+.addToCartButton:after {
   content: "";
   position: absolute;
   top: 5px;
@@ -192,7 +192,7 @@ input:checked + label:after {
   transform: translateX(-100%);
 }
 
-label:active:after {
+.addToCartButton:active:after {
   width: 20px;
 }
 @media (max-width: 768px) {

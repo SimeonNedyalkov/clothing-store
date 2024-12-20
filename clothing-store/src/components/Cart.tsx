@@ -9,8 +9,13 @@ import {
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Cloth from "../types/Cloth";
-import { useDispatch, useSelector } from "react-redux";
-import { closeCart, toggleCart, useTypedSelector } from "./reduxstore/store";
+import { useDispatch } from "react-redux";
+import {
+  closeCart,
+  openCart,
+  toggleCart,
+  useTypedSelector,
+} from "./reduxstore/store";
 const products = [
   {
     id: 1,
@@ -41,32 +46,40 @@ const products = [
 
 export default function Cart(props: { allClothes: Cloth[] }) {
   const [open, setOpen] = useState(false);
-  console.log(props.allClothes);
   const isCartOpen = useTypedSelector((state) => state.cart.isCartOpen);
-  console.log(isCartOpen);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (isCartOpen) {
       setOpen(true);
-    } else {
-      setOpen(false);
     }
   }, [isCartOpen]);
-  const dispatch = useDispatch();
-
+  useEffect(() => {
+    if (open == false) {
+      setTimeout(() => {
+        dispatch(closeCart());
+      }, 500);
+    }
+  }, [open]);
+  console.log(`Iscardopen ${isCartOpen}`);
+  console.log(`open : ${open}`);
   return (
     <>
-      {open ? (
+      {isCartOpen ? (
         <div className="cartWrapper">
           <Dialog
+            key={isCartOpen ? "open" : "closed"}
             open={open}
-            onClose={() => {
-              dispatch(closeCart());
-            }}
+            onClose={setOpen}
+            unmount
             className="relative z-10"
           >
             <DialogBackdrop
               transition
-              className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
+              className={`fixed inset-y-0 right-0 w-screen max-w-md transform ${
+                isCartOpen
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-full opacity-0"
+              } transition duration-500 ease-in-out`}
             />
 
             <div className="fixed inset-0 overflow-hidden">
@@ -85,7 +98,7 @@ export default function Cart(props: { allClothes: Cloth[] }) {
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
-                              onClick={() => dispatch(closeCart())}
+                              onClick={() => setOpen(false)}
                               className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
                             >
                               <span className="absolute -inset-0.5" />
@@ -171,7 +184,7 @@ export default function Cart(props: { allClothes: Cloth[] }) {
                             or{" "}
                             <button
                               type="button"
-                              onClick={() => dispatch(closeCart())}
+                              onClick={() => setOpen(false)}
                               className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
                               Continue Shopping
