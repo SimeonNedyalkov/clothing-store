@@ -1,6 +1,5 @@
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import Cloth from "../types/Cloth";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas } from "@react-three/fiber";
 import LoaderForThreeFiber from "./LoaderForThreeFiber";
 import Gloves from "./threeD/Gloves";
 import Hoodie from "./threeD/Hoodie";
@@ -19,6 +18,7 @@ export const scenes = [
     description: "Futuristic Gloves",
     price: 120,
     gender: "Male",
+    quantity: 4,
   },
   {
     path: Hoodie,
@@ -27,6 +27,7 @@ export const scenes = [
     description: "Futuristic Hoodie",
     price: 120,
     gender: "Male",
+    quantity: 0,
   },
   {
     path: Shoes,
@@ -35,10 +36,11 @@ export const scenes = [
     description: "Futuristic Shoes",
     price: 120,
     gender: "Male",
+    quantity: 2,
   },
 ];
 
-const Slider = (props: { allClothes: Cloth[] }) => {
+const Slider = () => {
   const [isRotating, setIsRotating] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [slide, setSlide] = useAtom(slideAtom);
@@ -119,9 +121,9 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       return (
         <Gloves
           key={`gloves`}
-          position={clothPosition}
-          scale={clothScale}
-          rotation={clothRotation}
+          position={clothPosition as [number, number, number] | null}
+          scale={clothScale as [number, number, number] | null}
+          rotation={clothRotation as [number, number, number] | null}
           isRotating={slide === index}
           setIsRotating={setIsRotating}
         />
@@ -130,9 +132,9 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       return (
         <Hoodie
           key={`hoodie`}
-          position={clothPosition}
-          scale={clothScale}
-          rotation={clothRotation}
+          position={clothPosition as [number, number, number] | null}
+          scale={clothScale as [number, number, number] | null}
+          rotation={clothRotation as [number, number, number] | null}
           isRotating={slide === index}
           setIsRotating={setIsRotating}
         />
@@ -141,9 +143,9 @@ const Slider = (props: { allClothes: Cloth[] }) => {
       return (
         <Shoes
           key={`shoes`}
-          position={clothPosition}
-          scale={clothScale}
-          rotation={clothRotation}
+          position={clothPosition as [number, number, number] | null}
+          scale={clothScale as [number, number, number] | null}
+          rotation={clothRotation as [number, number, number] | null}
           isRotating={slide === index}
           setIsRotating={setIsRotating}
         />

@@ -1,16 +1,13 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import glovesScene from "/threeD/scp-glove.glb";
 import { a } from "@react-spring/three";
 
-interface PropsInterface {
+interface GlovesProps {
   position: [number, number, number] | null;
   scale: [number, number, number] | null;
   rotation: [number, number, number] | null;
-}
-interface GlovesProps {
-  props: PropsInterface;
   isRotating: boolean;
   setIsRotating: (value: boolean) => void;
 }
@@ -18,7 +15,9 @@ interface GlovesProps {
 export default function Gloves({
   isRotating,
   setIsRotating,
-  ...props
+  position,
+  scale,
+  rotation,
 }: GlovesProps) {
   const { nodes, materials } = useGLTF(glovesScene) as any;
   const glovesRef = useRef<any>();
@@ -96,7 +95,13 @@ export default function Gloves({
   });
 
   return (
-    <a.group {...props} ref={glovesRef} dispose={null}>
+    <a.group
+      position={position || [0, 0, 0]}
+      rotation={rotation || [0, 0, 0]}
+      scale={scale || [1, 1, 1]}
+      ref={glovesRef}
+      dispose={null}
+    >
       <group rotation={[-Math.PI / 2, 5, 5]} scale={0.113}>
         <mesh
           castShadow

@@ -9,14 +9,14 @@ export const Overlay = () => {
   const [slide, setSlide] = useAtom(slideAtom);
   const [displaySlide, setDisplaySlide] = useState(slide);
   const [visible, setVisible] = useState(false);
-  const [windowVisible, setWindowVisible] = useState(false);
+  // const [windowVisible, setWindowVisible] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setWindowVisible(false);
-      setWindowVisible(true);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setWindowVisible(false);
+  //     setWindowVisible(true);
+  //   }, 2000);
+  // }, []);
 
   useEffect(() => {
     setTimeout(() => {

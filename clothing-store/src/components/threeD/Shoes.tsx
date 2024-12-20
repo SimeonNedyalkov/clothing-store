@@ -1,24 +1,23 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import shoesScene from "/threeD/puma_winter_shoe.glb";
 import { a } from "@react-spring/three";
 
-interface PropsInterface {
-  position: [number, number, number];
-  scale: [number, number, number];
-  rotation: [number, number, number];
-}
 interface ShoesProps {
+  position: [number, number, number] | null;
+  scale: [number, number, number] | null;
+  rotation: [number, number, number] | null;
   isRotating: boolean;
   setIsRotating: (value: boolean) => void;
-  props: PropsInterface;
 }
 
 export default function Shoes({
   isRotating,
   setIsRotating,
-  ...props
+  position,
+  rotation,
+  scale,
 }: ShoesProps) {
   const { nodes, materials } = useGLTF(shoesScene) as any;
   const shoesRef = useRef<any>();
@@ -97,7 +96,13 @@ export default function Shoes({
   });
 
   return (
-    <a.group {...props} ref={shoesRef} dispose={null}>
+    <a.group
+      position={position || [0, 0, 0]}
+      rotation={rotation || [0, 0, 0]}
+      scale={scale || [1, 1, 1]}
+      ref={shoesRef}
+      dispose={null}
+    >
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <mesh
           castShadow

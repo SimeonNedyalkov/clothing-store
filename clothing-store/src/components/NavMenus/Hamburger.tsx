@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import Cloth from "../../types/Cloth";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { toggleCart, useTypedSelector, openCart } from "../reduxstore/store";
-import Cart from "../Cart";
+import { useTypedSelector, openCart } from "../reduxstore/store";
 
 export default function Hamburger(props: { allClothes: Cloth[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#root {
+  max-width: 1280px;
+  margin: 0 0;
+  text-align: center;
+}
+
+body {
+  background-color: black;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f0f0;
+  transform: scaleY(0);
+  transform-origin: center;
+  z-index: -1;
+  transition: transform 1s ease-out;
+}
+
+.background-overlay.visible {
+  transform: scaleY(1);
+}/*# sourceMappingURL=app.css.map */

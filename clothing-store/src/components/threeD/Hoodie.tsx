@@ -1,24 +1,28 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import hoodieScene from "/threeD/hoodie.glb";
 import { a } from "@react-spring/three";
 
-interface PropsInterface {
-  position: [number, number, number];
-  scale: [number, number, number];
-  rotation: [number, number, number];
-}
+// interface PropsInterface {
+//   position: [number, number, number];
+//   scale: [number, number, number];
+//   rotation: [number, number, number];
+// }
 interface HoodieProps {
   isRotating: boolean;
   setIsRotating: (value: boolean) => void;
-  props: PropsInterface;
+  position: [number, number, number] | null;
+  scale: [number, number, number] | null;
+  rotation: [number, number, number] | null;
 }
 
 export default function Hoodie({
   isRotating,
   setIsRotating,
-  ...props
+  position,
+  scale,
+  rotation,
 }: HoodieProps) {
   const { nodes, materials } = useGLTF(hoodieScene) as any;
   const hoodieRef = useRef<any>();
@@ -97,7 +101,13 @@ export default function Hoodie({
   });
 
   return (
-    <a.group {...props} ref={hoodieRef} dispose={null}>
+    <a.group
+      position={position || [0, 0, 0]}
+      rotation={rotation || [0, 0, 0]}
+      scale={scale || [1, 1, 1]}
+      ref={hoodieRef}
+      dispose={null}
+    >
       <group rotation={[-Math.PI / 2, 0, 2]} scale={0.002}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh

@@ -8,14 +8,8 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import Cloth from "../types/Cloth";
 import { useDispatch } from "react-redux";
-import {
-  closeCart,
-  openCart,
-  toggleCart,
-  useTypedSelector,
-} from "./reduxstore/store";
+import { closeCart, useTypedSelector } from "./reduxstore/store";
 const products = [
   {
     id: 1,
@@ -44,7 +38,7 @@ const products = [
   // More products...
 ];
 
-export default function Cart(props: { allClothes: Cloth[] }) {
+export default function Cart() {
   const [open, setOpen] = useState(false);
   const isCartOpen = useTypedSelector((state) => state.cart.isCartOpen);
   const dispatch = useDispatch();

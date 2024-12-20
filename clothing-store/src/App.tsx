@@ -41,12 +41,12 @@ function App() {
       ></div>
       <Navigation allClothes={allClothes} />
       <Routes>
-        <Route path="/" element={<Home allClothes={allClothes}></Home>}></Route>
+        <Route path="/" element={<Home></Home>}></Route>
         {/* User */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-      <Cart allClothes={allClothes}></Cart>
+      <Cart></Cart>
     </>
   );
 }

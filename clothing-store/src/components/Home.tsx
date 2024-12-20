@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Slider from "./Slider";
-import Cloth from "../types/Cloth";
 import lenionLogo from "../assets/logo/cosmos.png";
-export default function Home(props: { allClothes: Cloth[] }) {
+export default function Home() {
   const [isWebsiteVisible, setIsWebsiteVisible] = useState(false);
   const [isWebsiteVisibleToggle, setIsWebsiteVisibleToggle] = useState(false);
 
@@ -33,7 +32,7 @@ export default function Home(props: { allClothes: Cloth[] }) {
 
         <div className="homeSliderContainer">
           <div className="pointed-boxLeft"></div>
-          <Slider allClothes={props.allClothes} />
+          <Slider />
           <div className="pointed-boxRight"></div>
         </div>
       </div>

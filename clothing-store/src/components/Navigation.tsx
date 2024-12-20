@@ -5,13 +5,13 @@ import BlobBtn from "./NavMenus/BlobBtn";
 
 export default function Navigation(props: { allClothes: Cloth[] }) {
   const [isShown, setIsShown] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(true);
-  useEffect(() => {
-    if (window.innerWidth <= 768) {
-      setIsMobile(true);
-    }
-  }, []);
+  // const [isMobile, setIsMobile] = useState(false);
+  // const [dropdownOpen, setDropdownOpen] = useState(true);
+  // useEffect(() => {
+  //   if (window.innerWidth <= 768) {
+  //     setIsMobile(true);
+  //   }
+  // }, []);
 
   useEffect(() => {
     setTimeout(() => {
