@@ -31,15 +31,26 @@ const scenes = [
     quantity: 2,
   },
 ];
-const orders = {
-  orderId: "12345",
-  status: "Shipped",
-  estimatedDelivery: "2024-12-25",
-  items: [
-    { name: "Gloves", quantity: 1 },
-    { name: "Shoes", quantity: 2 },
-  ],
-};
+const orders = [
+  {
+    orderId: "12345",
+    status: "Shipped",
+    estimatedDelivery: "2024-12-25",
+    items: [
+      { name: "Gloves", quantity: 1 },
+      { name: "Shoes", quantity: 2 },
+    ],
+  },
+  {
+    orderId: "123456",
+    status: "Pending Delivery",
+    estimatedDelivery: "none",
+    items: [
+      { name: "Hoodie", quantity: 1 },
+      { name: "Shoes", quantity: 1 },
+    ],
+  },
+];
 export default function ChatBot() {
   const [messages, setMessages] = useState([
     { type: "bot", text: "Hi! How can I assist you today?" },
@@ -82,11 +93,19 @@ export default function ChatBot() {
       }
     }
     if (lowerCaseInput.includes("order")) {
-      const match = lowerCaseInput.match(/order (\d+)/);
+      const match =
+        lowerCaseInput.match(/order (\d+)/) ||
+        lowerCaseInput.match(/order number (\d+)/) ||
+        lowerCaseInput.match(/order number: (\d+)/);
       if (match) {
         const orderId = match[1];
-        if (orderId === orders.orderId) {
-          botResponse = `Order with order number: ${orders.orderId} is with a ${orders.status} status and with estimated delivery on ${orders.estimatedDelivery}.`;
+        const currentOrder = orders.find((o) => o.orderId == orderId);
+        if (currentOrder) {
+          if (currentOrder.status == "Shipped") {
+            botResponse = `Order with order number: ${currentOrder.orderId} is with a ${currentOrder.status} status and with estimated delivery on ${currentOrder.estimatedDelivery}`;
+          } else {
+            botResponse = `Order with order number: ${currentOrder.orderId} is with a ${currentOrder.status} status`;
+          }
         } else {
           botResponse = `Please provide me with a correct order number.`;
         }
