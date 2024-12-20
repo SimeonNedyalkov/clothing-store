@@ -39,7 +39,7 @@
   background-color: transparent;
 }
 .styledInput {
-  border: 1px solid #0a7fec;
+  border: 1px solid #9c9c9c;
   border-radius: 5px;
   padding: 12px 16px;
   font-size: 1rem;
@@ -57,6 +57,9 @@
   padding-left: 0.5rem;
   padding-right: 0.3;
   color: #0a7fec;
+}
+.styledInput:focus {
+  border: 1px solid #0a7fec;
 }
 .styledPassword {
   position: relative;

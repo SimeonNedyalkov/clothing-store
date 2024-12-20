@@ -3,14 +3,30 @@ import { useState } from "react";
 import googleIco from "../../assets/signupwith/google-logo-search-new-svgrepo-com.svg";
 import facebookIco from "../../assets/signupwith/facebook-1-svgrepo-com.svg";
 import instagramIco from "../../assets/signupwith/instagram-svgrepo-com.svg";
-
+import useForm from "../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+const initialValues = { email: "", password: "" };
 export default function Login() {
   const [enabled, setEnabled] = useState(false);
+  const [error, setError] = useState("");
+  const navigation = useNavigate();
+  const { values, submitHandler, changeHandler } = useForm(
+    initialValues,
+    async () => {
+      const { email, password } = values;
+      try {
+        await console.log(email);
+        await console.log(password);
+      } catch (error) {
+        setError("Warning incorrect username or password");
+      }
+    }
+  );
   return (
     <>
       <div className="loginForm">
         <div className="formWrapper">
-          <form action="" className="flex flex-col">
+          <form className="flex flex-col" onSubmit={submitHandler}>
             <h1 className="text-4xl text-sky-950 pb-5">
               Login to your account.
             </h1>
@@ -24,6 +40,8 @@ export default function Login() {
                 type="email"
                 className="form-control styledInput"
                 placeholder="example@email.com"
+                onChange={changeHandler}
+                name="email"
               />
             </div>
 
@@ -35,6 +53,8 @@ export default function Login() {
                 type="password"
                 className="form-control styledInput"
                 placeholder="Your Password"
+                onChange={changeHandler}
+                name="password"
               />
             </div>
 
