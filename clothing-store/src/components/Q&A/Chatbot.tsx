@@ -75,13 +75,13 @@ export default function ChatBot() {
       botResponse =
         "We have the following products: Gloves, Hoodie, and Shoes.";
     } else if (lowerCaseInput.includes("gloves")) {
-      botResponse = `The Gloves cost $120. Description: Futuristic Gloves. Stock: 4 available.`;
+      botResponse = `The Gloves cost $120. Stock: 4 available.`;
     } else if (lowerCaseInput.includes("hoodie")) {
-      botResponse = `The Hoodie costs $120. Description: Futuristic Hoodie. Stock: ${
+      botResponse = `The Hoodie costs $120. Stock: ${
         scenes.find((product) => product.name === "Hoodie")?.quantity
       } available.`;
     } else if (lowerCaseInput.includes("shoes")) {
-      botResponse = `The Shoes cost $120. Description: Futuristic Shoes. Stock: 2 available.`;
+      botResponse = `The Shoes cost $120. Stock: 2 available.`;
     } else if (lowerCaseInput.includes("stock")) {
       const product = scenes.find((p) =>
         lowerCaseInput.includes(p.name.toLowerCase())
@@ -102,9 +102,9 @@ export default function ChatBot() {
         const currentOrder = orders.find((o) => o.orderId == orderId);
         if (currentOrder) {
           if (currentOrder.status == "Shipped") {
-            botResponse = `Order with order number: ${currentOrder.orderId} is with a ${currentOrder.status} status and with estimated delivery on ${currentOrder.estimatedDelivery}`;
+            botResponse = `Order with order number: ${currentOrder.orderId} is with a " ${currentOrder.status} " status and with estimated delivery on ${currentOrder.estimatedDelivery}`;
           } else {
-            botResponse = `Order with order number: ${currentOrder.orderId} is with a ${currentOrder.status} status`;
+            botResponse = `Order with order number: ${currentOrder.orderId} is with a " ${currentOrder.status} " status`;
           }
         } else {
           botResponse = `Please provide me with a correct order number.`;
