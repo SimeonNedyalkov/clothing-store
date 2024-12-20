@@ -31,7 +31,15 @@ const scenes = [
     quantity: 2,
   },
 ];
-
+const orders = {
+  orderId: "12345",
+  status: "Shipped",
+  estimatedDelivery: "2024-12-25",
+  items: [
+    { name: "Gloves", quantity: 1 },
+    { name: "Shoes", quantity: 2 },
+  ],
+};
 export default function ChatBot() {
   const [messages, setMessages] = useState([
     { type: "bot", text: "Hi! How can I assist you today?" },
@@ -71,6 +79,19 @@ export default function ChatBot() {
         botResponse = `${product.name} is ${
           product.quantity > 0 ? "in stock" : "out of stock"
         }`;
+      }
+    }
+    if (lowerCaseInput.includes("order")) {
+      const match = lowerCaseInput.match(/order (\d+)/);
+      if (match) {
+        const orderId = match[1];
+        if (orderId === orders.orderId) {
+          botResponse = `Order with order number: ${orders.orderId} is with a ${orders.status} status and with estimated delivery on ${orders.estimatedDelivery}.`;
+        } else {
+          botResponse = `Please provide me with a correct order number.`;
+        }
+      } else {
+        botResponse = `To check an order you need to provide me with an order number.`;
       }
     }
 
