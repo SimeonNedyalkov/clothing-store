@@ -1,5 +1,9 @@
 async function requester(method: any, url: string, data: any) {
-  const options = {
+  const options: {
+    headers: { [key: string]: string };
+    body?: string;
+    method: string;
+  } = {
     headers: {
       "Content-type": "application/json",
     },
@@ -18,7 +22,6 @@ async function requester(method: any, url: string, data: any) {
   if (method !== "GET") {
     options.method = method;
   }
-
   const response = await fetch(url, options);
 
   if (response.status == 204) {

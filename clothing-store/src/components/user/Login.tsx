@@ -18,9 +18,11 @@ export default function Login() {
       try {
         await console.log(email);
         await console.log(password);
-        const resp = await usersAPI.login(email, password);
+        const accessTokenUnchanged = await usersAPI.login(email, password);
 
-        console.log(resp);
+        const resp2 = await usersAPI.getStatus(accessTokenUnchanged);
+        const resp3 = await resp2.json();
+        console.log(resp3);
       } catch (err) {
         console.log(err);
       }

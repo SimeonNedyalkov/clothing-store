@@ -16,6 +16,16 @@ async function register(email: string, password: string) {
   });
   return resp;
 }
+async function getStatus(accessToken: string) {
+  const resp = await fetch(BASE_URL + "/auth/status", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  return resp;
+}
 
-const usersAPI = { login, register };
+const usersAPI = { login, register, getStatus };
 export default usersAPI;
