@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
-const BASE_URL = "http://localhost:3000";
+import usersAPI from "../../services/usersAPI";
 
 export default function useAuth() {
   const [response, setResponse] = useState(null);
@@ -9,10 +8,10 @@ export default function useAuth() {
 
   const login = async (email: string, password: string) => {
     try {
-      const body = { email, password };
-      const resp = await axios.post(BASE_URL + "/auth/login", body);
-      setResponse(resp.data); // Save the response data
-      setError(""); // Clear previous errors
+      const resp = await usersAPI.login(email, password);
+      console.log(resp);
+      setResponse(resp.data);
+      setError("");
       return resp.data;
     } catch (err) {
       setError("Warning: incorrect email or password");

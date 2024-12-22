@@ -17,7 +17,7 @@ export default function Register() {
         await console.log(password);
         await console.log(repassword);
       } catch (error) {
-        setError("Warning incorrect username or password");
+        setError("Warning incorrect email or password");
       }
     }
   );

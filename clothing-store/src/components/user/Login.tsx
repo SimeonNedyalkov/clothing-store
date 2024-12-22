@@ -5,11 +5,12 @@ import facebookIco from "../../assets/signupwith/facebook-1-svgrepo-com.svg";
 import instagramIco from "../../assets/signupwith/instagram-svgrepo-com.svg";
 import useForm from "../hooks/useForm";
 import useAuth from "../hooks/useAuth";
+import usersAPI from "../../services/usersAPI";
 const initialValues = { email: "", password: "" };
 export default function Login() {
   const [enabled, setEnabled] = useState(false);
-  // const [error, setError] = useState("");
-  const { response, error, login } = useAuth();
+  const [error, setError] = useState("");
+  const { login } = useAuth();
   const { values, submitHandler, changeHandler } = useForm(
     initialValues,
     async () => {
@@ -17,7 +18,8 @@ export default function Login() {
       try {
         await console.log(email);
         await console.log(password);
-        const resp = await login(email, password);
+        const resp = await usersAPI.login(email, password);
+
         console.log(resp);
       } catch (err) {
         console.log(err);
