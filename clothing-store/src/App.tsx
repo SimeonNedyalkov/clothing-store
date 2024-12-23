@@ -9,6 +9,7 @@ import Cart from "./components/Cart";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import ChatBot from "./components/Q&A/Chatbot";
+import AboutPage from "./components/About";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/qanda" element={<ChatBot />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <Cart></Cart>
       <ChatBot />

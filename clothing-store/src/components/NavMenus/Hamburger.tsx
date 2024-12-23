@@ -132,9 +132,9 @@ export default function Hamburger(props: { allClothes: Cloth[] }) {
             <Link to="register" className="nav-link">
               Register
             </Link>
-            <a href="#about" className="nav-link">
+            <Link to="/about" className="nav-link">
               About
-            </a>
+            </Link>
             <Link to="#" onClick={handleChatBotClick} className="nav-link">
               Q&A
             </Link>
