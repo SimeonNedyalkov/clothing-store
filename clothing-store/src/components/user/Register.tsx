@@ -18,9 +18,6 @@ export default function Register() {
           setError("Incorrect Username or Password!");
         } else {
           setError("");
-          await console.log(email);
-          await console.log(password);
-          await console.log(repassword);
           const user = usersAPI.register(email, password);
           console.log(user);
         }
