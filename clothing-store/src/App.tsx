@@ -10,6 +10,7 @@ import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import ChatBot from "./components/Q&A/Chatbot";
 import AboutPage from "./components/About";
+import AuthContextProvider from "./contexts/UserContext";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -37,21 +38,23 @@ function App() {
 
   return (
     <>
-      <Loader></Loader>
-      <div
-        className={`background-overlay ${isWebsiteVisible ? "visible" : ""}`}
-      ></div>
-      <Navigation allClothes={allClothes} />
-      <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        {/* User */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/qanda" element={<ChatBot />} />
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
-      <Cart></Cart>
-      <ChatBot />
+      <AuthContextProvider>
+        <Loader></Loader>
+        <div
+          className={`background-overlay ${isWebsiteVisible ? "visible" : ""}`}
+        ></div>
+        <Navigation allClothes={allClothes} />
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          {/* User */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/qanda" element={<ChatBot />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+        <Cart></Cart>
+        <ChatBot />
+      </AuthContextProvider>
     </>
   );
 }

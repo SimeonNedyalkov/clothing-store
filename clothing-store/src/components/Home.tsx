@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Slider from "./Slider";
 import lenionLogo from "../assets/logo/cosmos.png";
+import { useAuthContext } from "../contexts/UserContext";
 export default function Home() {
   const [isWebsiteVisible, setIsWebsiteVisible] = useState(false);
   const [isWebsiteVisibleToggle, setIsWebsiteVisibleToggle] = useState(false);
-
+  const context = useAuthContext();
   useEffect(() => {
     setTimeout(() => {
       setIsWebsiteVisible(false);
@@ -18,7 +19,7 @@ export default function Home() {
       setIsWebsiteVisibleToggle(true);
     }, timeoutDelay);
   }, []);
-
+  console.log(context);
   return (
     <div className={`website-content ${isWebsiteVisible ? "visible" : "home"}`}>
       <div className="image-container">

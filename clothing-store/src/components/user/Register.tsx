@@ -5,10 +5,12 @@ import facebookIco from "../../assets/signupwith/facebook-1-svgrepo-com.svg";
 import instagramIco from "../../assets/signupwith/instagram-svgrepo-com.svg";
 import useForm from "../hooks/useForm";
 import usersAPI from "../../services/usersAPI";
+import { useNavigate } from "react-router-dom";
 const initialValues = { email: "", password: "", repassword: "" };
 export default function Register() {
   const [enabled, setEnabled] = useState(false);
   const [error, setError] = useState("");
+  const navigation = useNavigate();
   const { values, submitHandler, changeHandler } = useForm(
     initialValues,
     async () => {
@@ -20,6 +22,7 @@ export default function Register() {
           setError("");
           const user = usersAPI.register(email, password);
           console.log(user);
+          navigation("/login");
         }
       } catch (error) {
         setError("Warning incorrect email or password");

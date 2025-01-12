@@ -4,27 +4,40 @@ import googleIco from "../../assets/signupwith/google-logo-search-new-svgrepo-co
 import facebookIco from "../../assets/signupwith/facebook-1-svgrepo-com.svg";
 import instagramIco from "../../assets/signupwith/instagram-svgrepo-com.svg";
 import useForm from "../hooks/useForm";
-import useAuth from "../hooks/useAuth";
 import usersAPI from "../../services/usersAPI";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../contexts/UserContext";
 const initialValues = { email: "", password: "" };
 export default function Login() {
   const [enabled, setEnabled] = useState(false);
   const [error, setError] = useState("");
-  const { login } = useAuth();
+  const { changeAuthState } = useAuthContext();
+  const navigation = useNavigate();
   const { values, submitHandler, changeHandler } = useForm(
     initialValues,
     async () => {
       const { email, password } = values;
       try {
-        await console.log(email);
-        await console.log(password);
-        const accessTokenUnchanged = await usersAPI.login(email, password);
+        const accessToken = await usersAPI.login(email, password);
+        if (!accessToken) {
+          throw new Error("Login failed: Invalid credentials.");
+        }
 
-        const resp2 = await usersAPI.getStatus(accessTokenUnchanged);
-        const resp3 = await resp2.json();
-        console.log(resp3);
-      } catch (err) {
-        console.log(err);
+        const userStatus = await usersAPI.getStatus(accessToken);
+        const userData = await userStatus.json();
+
+        const updatedAuthState = {
+          user: {
+            email: userData.email,
+            _id: userData._id,
+            accessToken,
+          },
+        };
+
+        changeAuthState(updatedAuthState);
+        navigation("/");
+      } catch (err: any) {
+        setError(err.message || "Something went wrong. Please try again.");
       }
     }
   );
