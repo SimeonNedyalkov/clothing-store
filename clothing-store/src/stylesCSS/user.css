@@ -119,4 +119,79 @@
 
 .loginBtn:hover {
   background-color: #6077fe;
+}
+
+.logoutBackground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 99vw;
+  height: 100vh;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal {
+  -webkit-text-size-adjust: 100%;
+  font-family: sans-serif;
+  line-height: 1.3;
+  font-size: 11px;
+  --skin003-color: #ffb142;
+  --skin004-color: #ffdc5e;
+  --skin005-color: #ffb142;
+  color: #eee;
+  box-sizing: border-box;
+  text-align: center;
+  transition: font-size 0.1s;
+  z-index: 50;
+  background-size: contain !important;
+  min-height: 31.8rem !important;
+  width: 39.125rem !important;
+  display: block;
+  inset: 9vw auto auto 50%;
+  transform: translate(-48%, 0px);
+  position: absolute;
+  height: auto;
+  padding: 3.9rem 7.3rem 2rem;
+  top: 70px;
+  font-size: 2.5rem;
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.buttonsForLogout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-left: 2rem;
 }/*# sourceMappingURL=user.css.map */

@@ -3,11 +3,13 @@ import Cloth from "../../types/Cloth";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useTypedSelector, openCart, toggleChatBot } from "../reduxstore/store";
+import { useAuthContext } from "../../contexts/UserContext";
 
 export default function Hamburger(props: { allClothes: Cloth[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
   const isCartOpen = useTypedSelector((state) => state.cart.isCartOpen);
+  const { isAuthenticated } = useAuthContext();
   const dispatch = useDispatch();
   const handleCartClick = (e: any) => {
     e.preventDefault();
@@ -114,6 +116,7 @@ export default function Hamburger(props: { allClothes: Cloth[] }) {
                 ))}
               </div>
             </div>
+
             <Link to="/" className="nav-link">
               Home
             </Link>
@@ -123,21 +126,32 @@ export default function Hamburger(props: { allClothes: Cloth[] }) {
             <a href="#ranking" className="nav-link">
               Ranking
             </a>
-            <Link onClick={handleCartClick} to="#" className="nav-link">
-              Cart
-            </Link>
-            <Link to="login" className="nav-link">
-              Login
-            </Link>
-            <Link to="register" className="nav-link">
-              Register
-            </Link>
+
             <Link to="/about" className="nav-link">
               About
             </Link>
             <Link to="#" onClick={handleChatBotClick} className="nav-link">
               Q&A
             </Link>
+            {isAuthenticated ? (
+              <>
+                <Link onClick={handleCartClick} to="#" className="nav-link">
+                  Cart
+                </Link>
+                <Link to="logout" className="nav-link">
+                  Logout
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="login" className="nav-link">
+                  Login
+                </Link>
+                <Link to="register" className="nav-link">
+                  Register
+                </Link>
+              </>
+            )}
           </div>
         </>
       ) : (

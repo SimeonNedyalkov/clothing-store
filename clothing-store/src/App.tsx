@@ -11,6 +11,7 @@ import Register from "./components/user/Register";
 import ChatBot from "./components/Q&A/Chatbot";
 import AboutPage from "./components/About";
 import AuthContextProvider from "./contexts/UserContext";
+import Logout from "./components/user/Logout";
 const baseUrl = "http://localhost:3000";
 
 function App() {
@@ -46,11 +47,13 @@ function App() {
         <Navigation allClothes={allClothes} />
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
+
+          <Route path="/qanda" element={<ChatBot />} />
+          <Route path="/about" element={<AboutPage />} />
           {/* User */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/qanda" element={<ChatBot />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
         <Cart></Cart>
         <ChatBot />
