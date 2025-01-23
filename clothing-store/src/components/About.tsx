@@ -1,3 +1,4 @@
+import image from "../assets/malefemalekid/openart-image_b8nfhTTx_1737652821071_raw__1_-removebg.png";
 const AboutPage = () => {
   return (
     <div className="aboutWrapper">
@@ -26,8 +27,8 @@ const AboutPage = () => {
         inclusive, sustainable, and inspiring. Stay stylish and be bold—because
         you deserve nothing less.
       </p>
-      <div>
-        <img src="/images/about-lenion.jpg" alt="LENION Clothing" />
+      <div className="aboutImage">
+        <img src={image} alt="LENION Clothing" />
       </div>
     </div>
   );

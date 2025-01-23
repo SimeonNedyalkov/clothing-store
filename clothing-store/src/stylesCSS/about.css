@@ -13,4 +13,13 @@
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
+  z-index: 1;
+}
+
+.aboutImage {
+  position: absolute;
+  bottom: 20rem;
+  z-index: 0;
+  width: 40vw;
+  height: 40vh;
 }/*# sourceMappingURL=about.css.map */
