@@ -23,3 +23,15 @@
   width: 40vw;
   height: 40vh;
 }
+.aboutLeft,
+.aboutRight {
+  width: 40%;
+  z-index: 2;
+}
+.aboutContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  margin-top: 2rem;
+}
