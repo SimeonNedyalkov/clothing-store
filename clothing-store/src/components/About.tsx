@@ -1,4 +1,4 @@
-import image from "../assets/malefemalekid/openart-image_b8nfhTTx_1737652821071_raw__1_-removebg.png";
+import image from "../assets/malefemalekid/openart-image_sDx2zgzi_1737697704476_raw-removebg-preview (2).png";
 const AboutPage = () => {
   return (
     <div className="aboutWrapper">
