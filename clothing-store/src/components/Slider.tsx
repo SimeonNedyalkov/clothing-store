@@ -10,6 +10,7 @@ import { slideAtom } from "./threeD/elements/Overlay";
 import { CameraControls } from "@react-three/drei";
 import { Overlay } from "./threeD/elements/Overlay";
 import clothesAPI from "../services/clothesAPI";
+import Cloth from "../types/Cloth";
 
 export const scenes = [
   {
@@ -46,7 +47,7 @@ const Slider = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [slide, setSlide] = useAtom(slideAtom);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const [clothes, setClothes] = useState([]);
+  const [clothes, setClothes] = useState<Cloth[]>([]);
   useEffect(() => {
     const getClothes = async () => {
       const clothes = await clothesAPI.getAllClothes();

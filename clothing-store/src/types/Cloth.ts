@@ -1,21 +1,22 @@
 interface Cloth {
   _id: string;
+  name: string;
+  mainColor: string;
+  sizes: string[];
+  color: string;
+  price: number;
   brand: string;
   category: string;
-  color: string;
+  material: string;
+  quantity: number;
+  sku: string;
   description: string;
   discount: number;
-  gender: string;
   images: string[];
-  material: string;
-  name: string;
-  price: number;
-  ratings: number;
   releaseDate: string;
-  season: string;
-  size: string;
-  sku: string;
-  stock: number;
+  gender: string;
   tags: string[];
+  season: string;
+  ratings: number;
 }
 export default Cloth;
