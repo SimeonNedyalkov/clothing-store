@@ -16,6 +16,10 @@ async function register(email: string, password: string) {
   });
   return resp;
 }
+// async function logout() {
+//   const resp = await requesterAPI.post(BASE_URL + "/auth/logout",null);
+//   return resp;
+// }
 async function getStatus(accessToken: string) {
   const resp = await fetch(BASE_URL + "/auth/status", {
     method: "GET",

@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../contexts/UserContext";
 export default function Logout({}) {
   const navigation = useNavigate();
+  const user = useAuthContext();
   function logoutHandler() {
     //   logout()
     navigation("/");
   }
-
+  function logoutFromFrontEnd() {
+    user.logout();
+    navigation("/");
+  }
   return (
     <div className="logoutBackground">
       <div className="overlay">
@@ -23,7 +28,7 @@ export default function Logout({}) {
                 <div className="buttonsForLogout">
                   <button
                     id="action-save"
-                    onClick={logoutHandler}
+                    onClick={logoutFromFrontEnd}
                     className="btn"
                     type="submit"
                   >
