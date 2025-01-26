@@ -7,7 +7,7 @@ export default function Logout({}) {
     //   logout()
     navigation("/");
   }
-  function logoutFromFrontEnd() {
+  function logoutFromBoth() {
     user.logout();
     navigation("/");
   }
@@ -28,7 +28,7 @@ export default function Logout({}) {
                 <div className="buttonsForLogout">
                   <button
                     id="action-save"
-                    onClick={logoutFromFrontEnd}
+                    onClick={logoutFromBoth}
                     className="btn"
                     type="submit"
                   >

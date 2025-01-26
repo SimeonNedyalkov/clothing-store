@@ -9,6 +9,7 @@ import { useAtom } from "jotai";
 import { slideAtom } from "./threeD/elements/Overlay";
 import { CameraControls } from "@react-three/drei";
 import { Overlay } from "./threeD/elements/Overlay";
+import clothesAPI from "../services/clothesAPI";
 
 export const scenes = [
   {
@@ -45,6 +46,15 @@ const Slider = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [slide, setSlide] = useAtom(slideAtom);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const [clothes, setClothes] = useState([]);
+  useEffect(() => {
+    const getClothes = async () => {
+      const clothes = await clothesAPI.getAllClothes();
+      setClothes(clothes);
+      return clothes;
+    };
+    getClothes();
+  }, []);
   useEffect(() => {
     if (window.innerWidth <= 768) {
       setIsMobile(true);
